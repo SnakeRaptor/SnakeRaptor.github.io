@@ -1,7 +1,8 @@
 body {
-    background-color: darkgray;
+    background-color: gray;
 }
 
-body p {
-    background-color: lightblue;
+.section {
+    background-color: rgb(38, 165, 207);
+    padding: 3pt;
 }
