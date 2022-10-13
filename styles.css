@@ -31,6 +31,27 @@ body {
     color: white;
 }
 
+.mediasection {
+    background-color: rgb(29, 179, 230);
+
+    padding-left: 10pt;
+    padding-top: 1pt;
+    padding-bottom: 3pt;
+    padding-right: 10pt;
+
+    border-radius: 10pt;
+
+    margin-left: 50pt;
+    margin-right: 50pt;
+    margin-top: 10pt;
+    margin-bottom: 10pt;
+}
+
+.mediasection a img:hover {
+    background-color: #353535;
+    color: white;
+}
+
 .headnav {
     background-color: rgb(29, 179, 230);
     padding-left: 10pt;
@@ -58,6 +79,7 @@ body {
     font-size: 16px;
     border: none;
     cursor: pointer;
+    width: 130px;
 }
 
 /* The container <div> - needed to position the dropdown content */
@@ -71,7 +93,7 @@ body {
     display: none;
     position: absolute;
     background-color: #9b9b9b;
-    min-width: 160px;
+    width: 130px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
