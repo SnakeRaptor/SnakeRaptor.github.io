@@ -4,6 +4,25 @@ body {
     color: rgb(44, 44, 44);
 }
 
+.sectionwarning {
+    background-color: rgb(180, 0, 0);
+
+    text-align: center;
+    color: rgb(30, 30, 30);
+
+    padding-left: 10pt;
+    padding-top: 1pt;
+    padding-bottom: 3pt;
+    padding-right: 10pt;
+
+    border-radius: 10pt;
+
+    margin-left: 50pt;
+    margin-right: 50pt;
+    margin-top: 10pt;
+    margin-bottom: 10pt;
+}
+
 .section {
     background-color: rgb(29, 179, 230);
 
@@ -20,13 +39,19 @@ body {
     margin-bottom: 10pt;
 }
 
+.sectionwarning a {
+    color: rgb(59, 59, 59);
+    padding-left: 2pt;
+    padding-right: 2pt;
+}
+
 .section a {
     color: rgb(71, 71, 71);
     padding-left: 2pt;
     padding-right: 2pt;
 }
 
-.section a:hover {
+.section a:hover, .sectionwarning a:hover {
     background-color: #353535;
     color: white;
 }
