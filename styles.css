@@ -12,8 +12,23 @@ h3 {
     font-size: 17pt;
 }
 
-p {
+p,
+li {
     font-size: 14pt;
+}
+
+.clicklist {
+    background-color: rgb(28, 155, 197);
+    cursor: pointer;
+    font-size: 14pt;
+    border-radius: 5px;
+    border-width: 2px;
+    border-style: solid;
+    padding: 5px;
+}
+
+.clicklist ul {
+    list-style-type: square;
 }
 
 .sectionwarning {
@@ -51,13 +66,34 @@ p {
     margin-bottom: 10pt;
 }
 
-.section a, .sectionwarning a {
+.bannersection {
+    background-color: rgb(29, 179, 230);
+
+    text-align: center;
+
+    padding-left: 10pt;
+    padding-top: 1pt;
+    padding-bottom: 3pt;
+    padding-right: 10pt;
+
+    border-radius: 10pt;
+
+    margin-left: 50pt;
+    margin-right: 50pt;
+    margin-top: 10pt;
+    margin-bottom: 40px;
+}
+
+.section a,
+.sectionwarning a {
     color: rgb(71, 71, 71);
     padding-left: 2pt;
     padding-right: 2pt;
+    text-decoration: none;
 }
 
-.section a:hover, .sectionwarning a:hover {
+.section a:hover,
+.sectionwarning a:hover {
     background-color: #353535;
     color: white;
 }
@@ -88,13 +124,6 @@ p {
     font-family: tahoma;
     color: rgb(44, 44, 44);
     text-align: center;
-}
-
-.linksection .section:hover {
-    text-decoration: none;
-    font-family: tahoma;
-    color: dimgray;
-    background-color: rgb(50, 200, 240);
 }
 
 .headnav {
@@ -159,10 +188,48 @@ p {
 
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
+    animation-name: dropcontentslide;
+    animation-duration: 1s;
     display: block;
 }
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
     background-color: #353535;
+}
+
+/*ANIMATIONS*/
+/* makes .linksection pulse when hovered over */
+@keyframes pulselinksection {
+    0% {
+        color: rgb(44, 44, 44);
+        background-color: rgb(29, 179, 230);
+    }
+
+    50% {
+        color: rgb(128, 128, 128);
+        background-color: rgb(52, 211, 255);
+    }
+
+    100% {
+        color: rgb(44, 44, 44);
+        background-color: rgb(29, 179, 230);
+    }
+}
+
+.linksection .section:hover {
+    animation-name: pulselinksection;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+
+/* makes .dropcontent slide into view */
+@keyframes dropcontentslide {
+    0% {
+        max-height: 0px;
+    }
+
+    100% {
+        max-height: 300px;
+    }
 }
