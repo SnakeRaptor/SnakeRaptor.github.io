@@ -83,6 +83,20 @@ p {
     color: white;
 }
 
+.linksection {
+    text-decoration: none;
+    font-family: tahoma;
+    color: rgb(44, 44, 44);
+    text-align: center;
+}
+
+.linksection .section:hover {
+    text-decoration: none;
+    font-family: tahoma;
+    color: dimgray;
+    background-color: rgb(50, 200, 240);
+}
+
 .headnav {
     background-color: rgb(29, 179, 230);
     padding-left: 10pt;
@@ -107,7 +121,7 @@ p {
     background-color: #5a5a5a;
     color: white;
     padding: 16px;
-    font-size: 16px;
+    font-size: 16pt;
     border: none;
     cursor: pointer;
     width: 130px;
@@ -124,7 +138,7 @@ p {
     display: none;
     position: absolute;
     background-color: #9b9b9b;
-    width: 130px;
+    width: 150px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
@@ -132,6 +146,7 @@ p {
 /* Links inside the dropdown */
 .dropdown-content a {
     color: black;
+    font-size: 14pt;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
