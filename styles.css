@@ -29,6 +29,7 @@ li {
 
 .clicklist ul {
     list-style-type: square;
+    cursor: default;
 }
 
 .sectionwarning {
@@ -94,27 +95,6 @@ li {
 
 .section a:hover,
 .sectionwarning a:hover {
-    background-color: #353535;
-    color: white;
-}
-
-.mediasection {
-    background-color: rgb(29, 179, 230);
-
-    padding-left: 10pt;
-    padding-top: 1pt;
-    padding-bottom: 1pt;
-    padding-right: 10pt;
-
-    border-radius: 10pt;
-
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-top: 10pt;
-    margin-bottom: 10pt;
-}
-
-.mediasection a img:hover {
     background-color: #353535;
     color: white;
 }
@@ -187,7 +167,7 @@ li {
 }
 
 /* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
+.dropdown:hover .dropdown-content{
     animation-name: dropcontentslide;
     animation-duration: 1s;
     display: block;
