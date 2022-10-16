@@ -1,6 +1,6 @@
 body {
     background-color: rgb(44, 42, 42);
-    font-family: tahoma;
+    font-family: Tahoma;
     color: rgb(44, 44, 44);
 }
 
@@ -91,12 +91,14 @@ li {
     padding-left: 2pt;
     padding-right: 2pt;
     text-decoration: none;
+    border-radius: 5px;
 }
 
 .section a:hover,
 .sectionwarning a:hover {
-    background-color: #353535;
-    color: white;
+    animation-name: pulselinktext;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
 }
 
 .linksection {
@@ -148,7 +150,7 @@ li {
     position: absolute;
     background-color: #9b9b9b;
     width: 150px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 8px 8px 8px 8px rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
 
@@ -215,5 +217,23 @@ li {
 
     100% {
         max-height: 300px;
+    }
+}
+
+/* makes text links pulse */
+@keyframes pulselinktext {
+    0% {
+        color: rgb(133, 133, 133);
+        background-color: #353535;
+    }
+
+    50% {
+        background-color: #555555;
+        color: white;
+    }
+
+    100% {
+        color: rgb(133, 133, 133);
+        background-color: #353535;
     }
 }
