@@ -203,6 +203,10 @@ li {
     animation-iteration-count: infinite;
 }
 
+.linksection .section:hover img {
+    opacity: 0.9;
+}
+
 /* makes .dropcontent slide into view */
 @keyframes dropcontentslide {
     0% {
