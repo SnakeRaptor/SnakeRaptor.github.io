@@ -1,7 +1,7 @@
 body {
     background-color: rgb(44, 42, 42);
     font-family: Tahoma;
-    color: rgb(44, 44, 44);
+    color: rgb(29, 179, 230);
 }
 
 h2 {
@@ -18,12 +18,14 @@ li {
 }
 
 .clicklist {
-    background-color: rgb(28, 155, 197);
+    background-color: none;
     cursor: pointer;
+    color: rgb(28, 155, 197);
     font-size: 14pt;
     border-radius: 5px;
     border-width: 2px;
     border-style: solid;
+    border-color: rgb(28, 155, 197);
     padding: 5px;
 }
 
@@ -32,62 +34,49 @@ li {
     cursor: default;
 }
 
-.sectionwarning {
-    background-color: rgb(255, 187, 0);
-
-    text-align: center;
-    color: rgb(30, 30, 30);
+.section, .sectionwarning, .bannersection {
+    background-color: none;
 
     padding-left: 10pt;
     padding-top: 1pt;
     padding-bottom: 3pt;
     padding-right: 10pt;
 
-    border-radius: 10pt;
+    border-radius: 10px;
+    border-style: solid;
+}
 
+.section, .sectionwarning {
     margin-left: 5%;
     margin-right: 5%;
     margin-top: 10pt;
     margin-bottom: 10pt;
 }
 
-.section {
-    background-color: rgb(29, 179, 230);
+.sectionwarning {
 
-    padding-left: 10pt;
-    padding-top: 1pt;
-    padding-bottom: 3pt;
-    padding-right: 10pt;
+    text-align: center;
+    color: rgb(255, 187, 0);    
+    border-color: rgb(255, 187, 0);
+}
 
-    border-radius: 10pt;
-
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-top: 10pt;
-    margin-bottom: 10pt;
+.section, .bannersection {
+    color: rgb(29, 179, 230);
+    border-color: rgb(29, 179, 230);
 }
 
 .bannersection {
-    background-color: rgb(29, 179, 230);
-
     text-align: center;
 
-    padding-left: 10pt;
-    padding-top: 1pt;
-    padding-bottom: 3pt;
-    padding-right: 10pt;
-
-    border-radius: 10pt;
-
-    margin-left: 50pt;
-    margin-right: 50pt;
+    margin-left: 2%;
+    margin-right: 2%;
     margin-top: 10pt;
     margin-bottom: 40px;
 }
 
 .section a,
 .sectionwarning a {
-    color: rgb(71, 71, 71);
+    color: rgb(178, 178, 178);
     padding-left: 2pt;
     padding-right: 2pt;
     text-decoration: none;
@@ -109,9 +98,14 @@ li {
 }
 
 .headnav {
-    background-color: rgb(29, 179, 230);
+    background-color: none;
     padding-left: 10pt;
     padding-right: 10pt;
+    border-color: rgb(29, 179, 230);
+    border-bottom-style: solid;
+    border-top-style: solid;
+    border-width: 10px;
+    margin-bottom: 2%;
 }
 
 .headnav td {
@@ -129,7 +123,7 @@ li {
 
 /*everything below here is to do with site-wide dropdown menus*/
 .dropbtn {
-    background-color: #5a5a5a;
+    background-color: #7d7d7d;
     color: white;
     padding: 16px;
     font-size: 16pt;
@@ -177,31 +171,34 @@ li {
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
-    background-color: #353535;
+    background-color: #454545;
 }
 
 /*ANIMATIONS*/
 /* makes .linksection pulse when hovered over */
 @keyframes pulselinksection {
     0% {
-        color: rgb(44, 44, 44);
-        background-color: rgb(29, 179, 230);
+        color: rgb(29, 179, 230);
+        background-color: rgb(76, 76, 76);
+        border-color: rgb(29, 179, 230);
     }
 
     50% {
-        color: rgb(128, 128, 128);
-        background-color: rgb(52, 211, 255);
+        color: rgb(52, 211, 255);
+        background-color: rgb(115, 115, 115);
+        border-color: rgb(52, 211, 255);
     }
 
     100% {
-        color: rgb(44, 44, 44);
-        background-color: rgb(29, 179, 230);
+        color: rgb(29, 179, 230);
+        background-color: rgb(76, 76, 76);
+        border-color: rgb(29, 179, 230);
     }
 }
 
 .linksection .section:hover {
     animation-name: pulselinksection;
-    animation-duration: 1s;
+    animation-duration: 1.5s;
     animation-iteration-count: infinite;
 }
 
@@ -223,17 +220,17 @@ li {
 /* makes text links pulse */
 @keyframes pulselinktext {
     0% {
-        color: rgb(133, 133, 133);
-        background-color: #353535;
+        color: rgb(178, 178, 178);
+        background-color: #696969;
     }
 
     50% {
-        background-color: #555555;
+        background-color: #b8b8b8;
         color: white;
     }
 
     100% {
-        color: rgb(133, 133, 133);
-        background-color: #353535;
+        color: rgb(178, 178, 178);
+        background-color: #696969;
     }
 }
