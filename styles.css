@@ -169,7 +169,7 @@ li {
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
     animation-name: dropcontentslide;
-    animation-duration: 1s;
+    animation-duration: 0.5s;
     display: block;
 }
 
@@ -213,12 +213,10 @@ li {
 /* makes .dropcontent slide into view */
 @keyframes dropcontentslide {
     0% {
-        max-height: 0px;
         opacity: 0.0;
     }
 
     100% {
-        max-height: 300px;
         opacity: 1.0;
     }
 }
