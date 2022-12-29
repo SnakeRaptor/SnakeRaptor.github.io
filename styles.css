@@ -19,6 +19,14 @@ li {
     font-size: 14pt;
 }
 
+mark {
+    background-color: rgb(153, 153, 153);
+    color:rgb(44, 42, 42);
+    padding-left: 3pt;
+    padding-right: 3pt;
+    border-radius: 4px;
+}
+
 .clicklist {
     background-color: none;
     cursor: pointer;

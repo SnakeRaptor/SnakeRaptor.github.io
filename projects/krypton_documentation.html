@@ -31,16 +31,17 @@
 
     <div class="bannersection" style="text-align: center; margin-bottom: 40px;">
         <p>This page contains the documentation for my file handling and encryption library, Krypton.</p>
-        <p style="color:rgb(255, 187, 0);">Please note that this page is still work-in-progress, and may therefore be incomplete!</p>
+        <p style="color:rgb(255, 187, 0);">Please note that this page is still work-in-progress, and may therefore be
+            incomplete!</p>
     </div>
 
     <div class="section">
         <h2>Contents</h2>
         <p>
-            <ol>
-                <li><a href="#basicinfo">Basic Information</a></li>
-                <li><a href="#setup">Setup</a></li>
-            </ol>
+        <ol>
+            <li><a href="#basicinfo">Basic Information</a></li>
+            <li><a href="#setup">Setup</a></li>
+        </ol>
         </p>
     </div>
 
@@ -48,23 +49,67 @@
         <h2>Basic Information</h2>
 
         <h3>What is Krypton?</h3>
-        <p>Krypton is a library of methods that can be used for basic file handling, as well as for encrypting and decrypting strings.</p>
+        <p>Krypton is a library of methods that can be used for basic file handling, as well as for encrypting and
+            decrypting strings.</p>
+
+
+            <br />
 
         <h3>What encryption does Krypton offer?</h3>
-        <p>Krypton offers basic encryption and decryption using the following formats available through C#'s Encoding class:
-            <ul>
-                <li>ASCII</li>
-                <li>Latin1</li>
-                <li>Unicode</li>
-                <li>UTF-8</li>
-                <li>UTF-32</li>
-            </ul>
-            Please note that these forms of encryption are not extremely secure and should only be used to stop a person from directly accessing a file's data.
+        <p>Krypton offers basic encryption and decryption using the following formats available through C#'s Encoding
+            class:
+        <ul>
+            <li>ASCII</li>
+            <li>Latin1</li>
+            <li>Unicode</li>
+            <li>UTF-8</li>
+            <li>UTF-32</li>
+        </ul>
+        Please note that these forms of encryption are not extremely secure and should only be used to stop a person
+        from directly accessing a file's data.
         </p>
     </div>
 
     <div class="section" id="setup">
         <h2>Setup</h2>
+
+        <h3>Basic Setup</h3>
+        <p>To use Krypton, you must first add the DLL file as a reference. If you are not using Visual Studio, check
+            your IDE's documentation
+            to see how to add project references. In all IDEs, the final step will be the same. If you are using Visual
+            Studio, you can add a reference by following these steps:</p>
+        <ol>
+            <li>Go to <mark>Project > Add Project Reference > Browse</mark> then locate and select the
+                <mark>Vega.Krypton.dll</mark> file on your computer.
+            </li>
+            <li>Click OK and wait for Visual Studio to add the reference.</li>
+            <li>Finally, import the library to a file. If you are using C#, you can do this with the following code:
+                <mark>using Vega.Krypton;</mark>
+            </li>
+        </ol>
+
+        <br />
+
+        <h3>The KryptonType Enum</h3>
+        <p>Before you can Krypton's encryption features, you will need to create an instance of the
+            <mark>KryptonType</mark> enum. You will pass this in whenever you are creating an instance of the
+            <mark>Krypton</mark> class which is covered later. To create, and configure, the <mark>KryptonType</mark>
+            enum, use the following steps:</p>
+        <ol>
+            <li>Complete the setup process outline above. Otherwise you won't have access to the
+                <mark>KryptonType</mark> enum!</li>
+            <li>Create a new instance of the <mark>KryptonType</mark> enum in the same way you would with any other. In
+                C#, this can be done with the following line of code: <mark>KryptonType kt;</mark></li>
+            <li>Choose the type of encryption you wish to use. This can be done by assigning a value to the newly
+                created enum instance. The values that can be assigned are: <mark>A</mark>, <mark>L</mark>, <mark>U</mark>, <mark>U8</mark> and <mark>U32</mark>. Each corresponds to an
+                encryption type: ASCII, Latin1, Unicode, UTF-8 and UTF-32 respectively. In C#, the value can be assigned
+                with the following code: <mark>kt = KryptonType.A;</mark></li>
+        </ol>
+
+        <br />
+        
+        <h3>The Krypton Class</h3>
+        <p>All of Krypton's functionality is held within its namesake class: <mark>Krypton</mark>. You can create an instance of the <mark>Krypton</mark> class in the same way you would any other class. However, a <mark>KryptonType</mark> enum must be passed into the object when it is created. In C#, this can be done using the following code: <mark>Krypton krypt = new Krypton(kt);</mark></p>
     </div>
 
 </body>
