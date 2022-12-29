@@ -41,6 +41,7 @@
         <ol>
             <li><a href="#basicinfo">Basic Information</a></li>
             <li><a href="#setup">Setup</a></li>
+            <li><a href="#filehandling">Standard File Handling</a></li>
         </ol>
         </p>
     </div>
@@ -53,7 +54,7 @@
             decrypting strings.</p>
 
 
-            <br />
+        <br />
 
         <h3>What encryption does Krypton offer?</h3>
         <p>Krypton offers basic encryption and decryption using the following formats available through C#'s Encoding
@@ -94,22 +95,95 @@
         <p>Before you can Krypton's encryption features, you will need to create an instance of the
             <mark>KryptonType</mark> enum. You will pass this in whenever you are creating an instance of the
             <mark>Krypton</mark> class which is covered later. To create, and configure, the <mark>KryptonType</mark>
-            enum, use the following steps:</p>
+            enum, use the following steps:
+        </p>
         <ol>
             <li>Complete the setup process outline above. Otherwise you won't have access to the
-                <mark>KryptonType</mark> enum!</li>
+                <mark>KryptonType</mark> enum!
+            </li>
             <li>Create a new instance of the <mark>KryptonType</mark> enum in the same way you would with any other. In
                 C#, this can be done with the following line of code: <mark>KryptonType kt;</mark></li>
             <li>Choose the type of encryption you wish to use. This can be done by assigning a value to the newly
-                created enum instance. The values that can be assigned are: <mark>A</mark>, <mark>L</mark>, <mark>U</mark>, <mark>U8</mark> and <mark>U32</mark>. Each corresponds to an
+                created enum instance. The values that can be assigned are: <mark>A</mark>, <mark>L</mark>,
+                <mark>U</mark>, <mark>U8</mark> and <mark>U32</mark>. Each corresponds to an
                 encryption type: ASCII, Latin1, Unicode, UTF-8 and UTF-32 respectively. In C#, the value can be assigned
                 with the following code: <mark>kt = KryptonType.A;</mark></li>
         </ol>
 
         <br />
-        
+
         <h3>The Krypton Class</h3>
-        <p>All of Krypton's functionality is held within its namesake class: <mark>Krypton</mark>. You can create an instance of the <mark>Krypton</mark> class in the same way you would any other class. However, a <mark>KryptonType</mark> enum must be passed into the object when it is created. In C#, this can be done using the following code: <mark>Krypton krypt = new Krypton(kt);</mark></p>
+        <p>All of Krypton's encryption functionality is held within its namesake class: <mark>Krypton</mark>. You can
+            create an instance of the <mark>Krypton</mark> class in the same way you would any other class. However, a
+            <mark>KryptonType</mark> enum must be passed into the object when it is created. In C#, this can be done
+            using the following code: <mark>Krypton krypt = new Krypton(kt);</mark></p>
+    </div>
+
+    <div class="section" id="filehandling">
+        <h2>Standard File Handling</h2>
+        <p>Whilst the primary function of Krypton is its encryption services, the library also contains operations for
+            basic reading and writing to files.</p>
+
+        <br />
+
+        <h3>The UFile Class</h3>
+        <p>Standard file handling functions can be found inside the <mark>UFile</mark> class. You can access these by
+            creating an instance of the class. In C#, this is done with the following code: <mark>UFile uf = new
+                UFile()</mark></p>
+
+        <br />
+
+        <h3>Writing to Files</h3>
+        <p>The <mark>UFile</mark> class comes with two methods for writing to files: <mark>AppendToFile</mark> and
+            <mark>OverwriteToFile</mark>.
+            <br>The <mark>AppendToFile</mark> method will add text onto the end of an existing file, leaving the rest of
+            the file intact.<br>The <mark>OverwriteToFile</mark> method will erase all text in a file and replace it
+            with with the text passed into it.<br>Both methods require two arguments in the following order:
+        <ol>
+            <li>The directory of the file you wish to write to.</li>
+            <li>The text you wish to write to the file.</li>
+        </ol>
+        </p>
+
+        <br />
+        <h3>Reading from Files</h3>
+        <p>In addition to writing to files, the <mark>UFile</mark> class comes with two methods for reading from files:
+            <mark>ReadFromFile</mark> and <mark>ListFromFile</mark>.
+            <br>The <mark>ReadFromFile</mark> method will return a string containing all of the text in the file within
+            the given directory.
+            <br>The <mark>ListFromFile</mark> method will return a List of string, where each item is a new line. This
+            is especially useful when reading from a CSV, or other basic data storage file.
+            <br>Both methods only reuire one argument: the directory of the file to be read from. Both methods will
+            return <mark>null</mark> if an error occurs, so it is good practice to check the output from the method is
+            not <mark>null</mark>.
+        </p>
+    </div>
+
+    <div class="section" id="eandd">
+        <h2>Encryption and Decryption</h2>
+        <p>The primary function of Krypton is to provide basic encryption to strings. Please note that these methods of encryption are not completely secure, and should only be used to make text not directly readable.</p>
+
+        <br />
+
+        <h3>The Krypton Class</h3>
+        <p>As mentioned <a href="#setup">before</a>, all of Krypton's encryption and decryption functions are located in the <mark>Krypton</mark> class. Ensure you have set up an instance of the class before continuing.</p>
+
+        <h3>The Encode Method</h3>
+        <p>This method is used to encrypt a string which is passed to it. To use it in C#, you can use the code: <mark>krypt.Encode(myString);</mark>
+            <br>From here, the string is taken and converted into the format you chose when creating the <mark>Krypton</mark> object. The method then returns the encrypted string.
+        </p>
+
+        <h3>The Decode Method</h3>
+        <p>This method is used to decrypt a string which is passed to it. To use it in C#, you can use the code: <mark>krypt.Decode(myEncryptedString);</mark>
+            <br>From here, the string is taken and converted from the format specified when creating the <mark>Krpyton</mark> object, into a string. This string is then returned.
+            <br>Note that you need to know the type of encryption used for this method to work correctly.
+        </p>
+
+        <h3>The SwitchType Method</h3>
+        <p>
+            This method is used if you wish to change the type of encryption being used by the <mark>Krypton</mark> object. To use it, create a new <mark>KryptonType</mark> enum and call the method, passing the enum as an argument.
+            <br>In C#, this can be done like this: <mark>krypt.SwitchType(kt);</mark>
+        </p>
     </div>
 
 </body>
