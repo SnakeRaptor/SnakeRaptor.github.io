@@ -53,7 +53,6 @@
         <p>Krypton is a library of methods that can be used for basic file handling, as well as for encrypting and
             decrypting strings.</p>
 
-
         <br />
 
         <h3>What encryption does Krypton offer?</h3>
@@ -84,7 +83,7 @@
                 <mark>Vega.Krypton.dll</mark> file on your computer.
             </li>
             <li>Click OK and wait for Visual Studio to add the reference.</li>
-            <li>Finally, import the library to a file. If you are using C#, you can do this with the following code:
+            <li>Finally, import the library to a file or class. If you are using C#, you can do this with the following code:
                 <mark>using Vega.Krypton;</mark>
             </li>
         </ol>
@@ -92,7 +91,7 @@
         <br />
 
         <h3>The KryptonType Enum</h3>
-        <p>Before you can Krypton's encryption features, you will need to create an instance of the
+        <p>Before you can use Krypton's encryption features, you will need to create an instance of the
             <mark>KryptonType</mark> enum. You will pass this in whenever you are creating an instance of the
             <mark>Krypton</mark> class which is covered later. To create, and configure, the <mark>KryptonType</mark>
             enum, use the following steps:
@@ -136,8 +135,7 @@
         <br />
 
         <h3>Writing to Files</h3>
-        <p>The <mark>UFile</mark> class comes with two methods for writing to files: <mark>AppendToFile</mark> and
-            <mark>OverwriteToFile</mark>.
+        <p>The <mark>UFile</mark> class comes with two methods for writing to files:
             <br>The <mark>AppendToFile</mark> method will add text onto the end of an existing file, leaving the rest of
             the file intact.<br>The <mark>OverwriteToFile</mark> method will erase all text in a file and replace it
             with with the text passed into it.<br>Both methods require two arguments in the following order:

@@ -1,7 +1,7 @@
 body {
     background-color: rgb(44, 42, 42);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: rgb(29, 179, 230);
+    color: rgb(216, 216, 216);
     padding: 0;
     margin: 0;
 }
@@ -30,7 +30,7 @@ mark {
 .clicklist {
     background-color: none;
     cursor: pointer;
-    color: rgb(28, 155, 197);
+    color: rgb(216, 216, 216);
     font-size: 14pt;
     border-radius: 5px;
     border-width: 2px;
@@ -71,7 +71,7 @@ mark {
 }
 
 .section, .bannersection {
-    color: rgb(29, 179, 230);
+    color: rgb(216, 216, 216);
     border-color: rgb(29, 179, 230);
 }
 
@@ -190,19 +190,19 @@ mark {
 /* makes .linksection pulse when hovered over */
 @keyframes pulselinksection {
     0% {
-        color: rgb(29, 179, 230);
+        color: rgb(216, 216, 216);
         background-color: rgb(76, 76, 76);
         border-color: rgb(29, 179, 230);
     }
 
     50% {
-        color: rgb(52, 211, 255);
+        color: rgb(255, 255, 255);
         background-color: rgb(115, 115, 115);
         border-color: rgb(52, 211, 255);
     }
 
     100% {
-        color: rgb(29, 179, 230);
+        color: rgb(216, 216, 216);
         background-color: rgb(76, 76, 76);
         border-color: rgb(29, 179, 230);
     }
