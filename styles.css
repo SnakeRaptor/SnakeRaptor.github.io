@@ -86,7 +86,8 @@ mark {
 
 .section a,
 .sectionwarning a {
-    color: rgb(178, 178, 178);
+    color: rgb(255, 255, 255);
+    background-color: #414141;
     padding-left: 2pt;
     padding-right: 2pt;
     text-decoration: none;
