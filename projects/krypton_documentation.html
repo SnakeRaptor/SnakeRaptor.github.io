@@ -30,7 +30,7 @@
     </div>
 
     <div class="bannersection" style="text-align: center; margin-bottom: 40px;">
-        <p>This page contains the documentation for my file handling and encryption library, Krypton.</p>
+        <p>This page contains the documentation for my file handling and encoding library, Krypton.</p>
     </div>
 
     <div class="section">
@@ -40,8 +40,9 @@
             <li><a href="#basicinfo">Basic Information</a></li>
             <li><a href="#setup">Setup</a></li>
             <li><a href="#filehandling">Standard File Handling</a></li>
-            <li><a href="#eandd">Encryption and Decryption</a></li>
-            <li><a href="#encfilehandling">File Handling with Encryption</a></li>
+            <li><a href="#eandd">Encoding and Decoding</a></li>
+            <li><a href="#encfilehandling">File Handling with Encoding</a></li>
+            <li><a href="#upcoming">Upcoming Features</a></li>
         </ol>
         </p>
     </div>
@@ -50,13 +51,13 @@
         <h2>Basic Information</h2>
 
         <h3>What is Krypton?</h3>
-        <p>Krypton is a library of methods that can be used for basic file handling, as well as for encrypting and
-            decrypting strings.</p>
+        <p>Krypton is a library of methods that can be used for basic file handling, as well as for encoding and
+            decoding strings.</p>
 
         <br />
 
-        <h3>What encryption does Krypton offer?</h3>
-        <p>Krypton offers basic encryption and decryption using the following formats available through C#'s Encoding
+        <h3>What encoding does Krypton offer?</h3>
+        <p>Krypton offers basic encoding and decoding using the following formats available through C#'s Encoding
             class:
         <ul>
             <li>ASCII</li>
@@ -65,10 +66,10 @@
             <li>UTF-8</li>
             <li>UTF-32</li>
         </ul>
-        Please note that these forms of encryption are not extremely secure and should only be used to stop a person
-        from directly accessing a file's data.
+        Please note that these are not true forms of encryption and can be easily decrypted.
         </p>
     </div>
+
 
     <div class="section" id="setup">
         <h2>Setup</h2>
@@ -83,7 +84,8 @@
                 <mark>Vega.Krypton.dll</mark> file on your computer.
             </li>
             <li>Click OK and wait for Visual Studio to add the reference.</li>
-            <li>Finally, import the library to a file or class. If you are using C#, you can do this with the following code:
+            <li>Finally, import the library to a file or class. If you are using C#, you can do this with the following
+                code:
                 <mark>using Vega.Krypton;</mark>
             </li>
         </ol>
@@ -91,18 +93,18 @@
         <br />
 
         <h3>The KryptonType Enum</h3>
-        <p>Before you can use Krypton's encryption features, you will need to create an instance of the
+        <p>Before you can use Krypton's encoding features, you will need to create an instance of the
             <mark>KryptonType</mark> enum. You will pass this in whenever you are creating an instance of the
             <mark>Krypton</mark> class which is covered later. To create, and configure, the <mark>KryptonType</mark>
             enum, use the following steps:
         </p>
         <ol>
             <li>Complete the setup process outline above. Otherwise you won't have access to the
-                <mark>KryptonType</mark> enum!
+                <mark>KryptonType</mark> enum.
             </li>
             <li>Create a new instance of the <mark>KryptonType</mark> enum in the same way you would with any other. In
                 C#, this can be done with the following line of code: <mark>KryptonType kt;</mark></li>
-            <li>Choose the type of encryption you wish to use. This can be done by assigning a value to the newly
+            <li>Choose the type of encoding you wish to use. This can be done by assigning a value to the newly
                 created enum instance. The values that can be assigned are: <mark>A</mark>, <mark>L</mark>,
                 <mark>U</mark>, <mark>U8</mark> and <mark>U32</mark>. Each corresponds to an
                 encryption type: ASCII, Latin1, Unicode, UTF-8 and UTF-32 respectively. In C#, the value can be assigned
@@ -113,7 +115,7 @@
         <br />
 
         <h3>The Krypton Class</h3>
-        <p>All of Krypton's encryption functionality is held within its namesake class: <mark>Krypton</mark>. You can
+        <p>All of Krypton's encoding functionality is held within its namesake class: <mark>Krypton</mark>. You can
             create an instance of the <mark>Krypton</mark> class in the same way you would any other class. However, a
             <mark>KryptonType</mark> enum must be passed into the object when it is created. In C#, this can be done
             using the following code: <mark>Krypton krypt = new Krypton(kt);</mark>
@@ -122,7 +124,7 @@
 
     <div class="section" id="filehandling">
         <h2>Standard File Handling</h2>
-        <p>Whilst the primary function of Krypton is its encryption services, the library also contains operations for
+        <p>Whilst the primary function of Krypton is its encoding services, the library also contains operations for
             basic reading and writing to files.</p>
 
         <br />
@@ -160,34 +162,34 @@
     </div>
 
     <div class="section" id="eandd">
-        <h2>Encryption and Decryption</h2>
-        <p>The primary function of Krypton is to provide basic encryption to strings. Please note that these methods of
-            encryption are not completely secure, and should only be used to make text not directly readable.</p>
+        <h2>Encoding and Decoding</h2>
+        <p>The primary function of Krypton is to provide basic encoding to strings. Please note that this is not
+            encryption, and can be decrypted easily. Its purpose is to make strings unreadable.</p>
 
         <br />
 
         <h3>The Krypton Class</h3>
-        <p>As mentioned <a href="#setup">before</a>, all of Krypton's encryption and decryption functions are located in
+        <p>As mentioned <a href="#setup">before</a>, all of Krypton's encoding and decoding functions are located in
             the <mark>Krypton</mark> class. Ensure you have set up an instance of the class before continuing.</p>
 
         <h3>The Encode Method</h3>
-        <p>This method is used to encrypt a string which is passed to it. To use it in C#, you can use the code:
+        <p>This method is used to encode a string which is passed to it. To use it in C#, you can use the code:
             <mark>krypt.Encode(myString);</mark>
             <br>From here, the string is taken and converted into the format you chose when creating the
-            <mark>Krypton</mark> object. The method then returns the encrypted string.
+            <mark>Krypton</mark> object. The method then returns the encoded string.
         </p>
 
         <h3>The Decode Method</h3>
-        <p>This method is used to decrypt a string which is passed to it. To use it in C#, you can use the code:
+        <p>This method is used to decode a string which is passed to it. To use it in C#, you can use the code:
             <mark>krypt.Decode(myEncryptedString);</mark>
             <br>From here, the string is taken and converted from the format specified when creating the
             <mark>Krpyton</mark> object, into a string. This string is then returned.
-            <br>Note that you need to know the type of encryption used for this method to work correctly.
+            <br>Note that you need to know the type of encoding used for this method to work correctly.
         </p>
 
         <h3>The SwitchType Method</h3>
         <p>
-            This method is used if you wish to change the type of encryption being used by the <mark>Krypton</mark>
+            This method is used if you wish to change the type of encoding being used by the <mark>Krypton</mark>
             object. To use it, create a new <mark>KryptonType</mark> enum and call the method, passing the enum as an
             argument.
             <br>In C#, this can be done like this: <mark>krypt.SwitchType(kt);</mark>
@@ -195,14 +197,14 @@
     </div>
 
     <div class="section" id="encfilehandling">
-        <h2>File Handling with Encryption</h2>
-        <p>File handling with encryption works similarly to standard file handling and will likely be the most useful
+        <h2>File Handling with Encoding</h2>
+        <p>File handling with encoding works similarly to standard file handling and will likely be the most useful
             feature.</p>
 
         <br />
 
         <h3>The KFile Class</h3>
-        <p>File handling functions with encryption can be found inside the <mark>KFile</mark> class. You can access
+        <p>File handling functions with encoding can be found inside the <mark>KFile</mark> class. You can access
             these by
             creating an instance of the class. In C#, this is done with the following code: <mark>KFile kf = new
                 KFile()</mark></p>
@@ -212,30 +214,42 @@
         <h3>Writing to Files</h3>
         <p>Similarly to the <mark>UFile</mark> class, the <mark>KFile</mark> class contains two methods for writing to
             files:
-            <br>The <mark>AppendToFile</mark> method will encrypyt text, using the chosen encoder, then add it to the
+            <br>The <mark>AppendToFile</mark> method will encode text, using the chosen encoder, then add it to the
             end of a file leaving the previous contents intact.
             <br>The <mark>OverwriteToFile</mark> method will erase all text in a file and replace it with the text
-            passed to the method, encrypted using the chosen encoder.
+            passed to the method, encoded using the chosen encoder.
             <br>Both methods require three arguments in the following order:
         <ul>
             <li>The directory of the file you wish to write to.</li>
-            <li>The text you wish to write to the file (not encrypted).</li>
-            <li>A <mark>KryptonType</mark> enum configured to the desired encryption type.</li>
+            <li>The text you wish to write to the file (not encoded).</li>
+            <li>A <mark>KryptonType</mark> enum configured to the desired encoding type.</li>
         </ul>
         </p>
 
         <br />
 
         <h3>Reading from Files</h3>
-        <p>For reading from an encrypted file to work, you must know what type of encryption was used originally. The <mark>KFile</mark> class contains two methods for reading encrypted files.
-        <br>The <mark>ReadFromFile</mark> method will read in text from the specified file, decrypt it using the chosen encryption method, then return a string of the decrypted text.
-        <br>The <mark>ListFromFile</mark> method will read in text one line at a time into a List of strings, decrypting each line, then return the List of lines.
-        <br>Both methods require two arguments in the following order:
-            <ul>
-                <li>The directory of the file to be read and decrypted.</li>
-                <li>A <mark>KryptonType</mark> enum configured to the desired encryption method.</li>
-            </ul>
+        <p>For reading from an encoded file to work, you must know what type of encoding was used originally. The
+            <mark>KFile</mark> class contains two methods for reading encoded files.
+            <br>The <mark>ReadFromFile</mark> method will read in text from the specified file, decode it using the
+            chosen encoding method, then return a string of the decoded text.
+            <br>The <mark>ListFromFile</mark> method will read in text one line at a time into a List of strings,
+            decoding each line, then return the List of lines.
+            <br>Both methods require two arguments in the following order:
+        <ul>
+            <li>The directory of the file to be read and decoded.</li>
+            <li>A <mark>KryptonType</mark> enum configured to the desired encoding method.</li>
+        </ul>
         </p>
+    </div>
+
+    <div class="section" id="upcoming">
+        <h2>Upcoming Features</h2>
+        <p>Here are some features that are currently being worked on and could be added to Krypton soon:</p>
+        <ul>
+            <li>Full encryption: encoding is good, but encryption is better and far more secure. The only obstacle to
+                this feature at this time is with the storage of keys and IVs.</li>
+        </ul>
     </div>
 
 </body>
