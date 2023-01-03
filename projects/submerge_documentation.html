@@ -76,20 +76,17 @@
             your code. Submerge can handle both Strings and Lists for files. In addition, there are plans to add support
             for reading and writing Dictionaries to files.
         </p>
-        <br>
 
         <h3>Encoding</h3>
         <p>
             Utilising C#'s Encoding class, Submerge can encode, and decode, data in five different formats: ASCII,
-            Latin1, Unicode, UTF8 and UTF32. The main purpose to this is to make data unreadable to prying eyes.
+            Latin1, Unicode, UTF-8 and UTF-32. The main purpose to this is to make data unreadable to prying eyes.
         </p>
-        <br>
 
         <h3>Encryption</h3>
         <p>
             Submerge can encrypt and decrypt data to modern standards by using C#'s AES class.
         </p>
-        <br>
 
         <h3>Data Drowning</h3>
         <p>
@@ -120,8 +117,8 @@
     <div class="section" id="classes">
         <h2>Classes</h2>
         <p>
-            Submerge contains four classes, each of which carries out the operations for one of Submerge's four main
-            features. These classes are mostly self-explanatory, and are: <mark class="code">FileHandling</mark>, <mark
+            Submerge contains five classes, each of which carries out the operations for one of Submerge's four main
+            features, or combines them. These classes are: <mark class="code">FileHandling</mark>, <mark
                 class="code">SEncoding</mark>, <mark class="code">SEncrypting</mark>,
             <mark class="code">SDrown</mark> and <mark class="code">SMaster</mark>.
         </p>
@@ -330,7 +327,8 @@
 
     <div class="section" id="encryption">
         <h2>Encryption and Decryption</h2>
-        <p>Submerge has the ability to encrypt and decrypt strings using its <mark class="code">SEncrypting</mark> class. In C#, this can be created using the following code:</p>
+        <p>Submerge has the ability to encrypt and decrypt strings using its <mark class="code">SEncrypting</mark>
+            class. In C#, this can be created using the following code:</p>
         <div class="codesection">
             <mark class="type">SEncrypting</mark> <mark class="var">fileHandling</mark> = <mark
                 class="keyword">new</mark> <mark class="type">SEncrypting</mark>();
@@ -343,10 +341,25 @@
 
     <div class="section" id="encryption">
         <h2>Data Drowning</h2>
-        <p>Submerge has the ability to "drown" data using its <mark class="code">SDrowning</mark></p>
+        <p>Submerge has the ability to "drown" data using its <mark class="code">SDrowning</mark> class. An instance of the class can be created with the following code in C#:</p>
         <div class="codesection">
-            <mark class="type">SEncrypting</mark> <mark class="var">fileHandling</mark> = <mark
-                class="keyword">new</mark> <mark class="type">SEncrypting</mark>();
+            <mark class="type">SDrowning</mark> <mark class="var">drowning</mark> = <mark class="keyword">new</mark>
+            <mark class="type">SDrowning</mark>();
+        </div>
+        <p>Ensure you have completed the setup outlined <a href="#setup">above</a> first.</p>
+    </div>
+
+
+
+
+    <div class="section" id="encryption">
+        <h2>Combining Functionality</h2>
+        <p>Submerge's <mark class="code">SMaster</mark> class makes it easy to combine the multiple functions of
+            Submerge, such as data drowning and encoding. You can create a new instance of the class, in C#, with this
+            code:</p>
+        <div class="codesection">
+            <mark class="type">SMaster</mark> <mark class="var">master</mark> = <mark class="keyword">new</mark> <mark
+                class="type">SMaster</mark>();
         </div>
         <p>Ensure you have completed the setup outlined <a href="#setup">above</a> first.</p>
     </div>
