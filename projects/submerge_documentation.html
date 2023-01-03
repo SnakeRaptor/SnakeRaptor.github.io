@@ -5,6 +5,12 @@
     <title>Alastair Kilgour</title>
     <link rel="stylesheet" href="../styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        .section {
+            margin-top: 50px;
+        }
+    </style>
 </head>
 
 <body>
@@ -33,22 +39,316 @@
         <p>This page contains the documentation for my file handling and encryption library, Submerge.</p>
     </div>
 
+    <div class="sectionwarning">
+        <h2>Work-In-Progress</h2>
+        <p>The documentation for Submerge is currently incomplete. However, it is being actively worked on.</p>
+    </div>
+
     <div class="section">
         <h2>Contents</h2>
         <p>
         <ol>
-            <li><a href="#basicinfo">Basic Information</a></li>
+            <li><a href="#history">Brief History</a></li>
+            <li><a href="#features">Features</a></li>
             <li><a href="#setup">Setup</a></li>
-            <li><a href="#filehandling">Standard File Handling</a></li>
-            <li><a href="#eandd">Encoding and Decoding</a></li>
-            <li><a href="#encfilehandling">File Handling with Encoding</a></li>
-            <li><a href="#upcoming">Upcoming Features</a></li>
+            <li><a href="#classes">Classes</a></li>
+            <li><a href="#filehandling">File Handling</a></li>
+            <li><a href="#encoding">Encoding and Decoding</a></li>
+            <li><a href="#encryption">Encryption and Decryption</a></li>
         </ol>
         </p>
     </div>
 
-    <div>
-        <p>ASCII, UTF32, Unicode</p>
+    <div class="section" id="history">
+        <h2>Brief History</h2>
+        <p>Submerge is the successor to my original file handling and encoding library, Krypton. Krypton was thrown
+            together hastily, and was a bit of an inefficient mess. Therefore, it was scrapped and replaced with
+            Submerge.
+        </p>
+    </div>
+
+    <div class="section" id="features">
+        <h2>Features</h2>
+
+        <h3>File Handling</h3>
+        <p>
+            Submerge contains various methods for reading and writing to files, cutting out a large number of lines from
+            your code. Submerge can handle both Strings and Lists for files. In addition, there are plans to add support
+            for reading and writing Dictionaries to files.
+        </p>
+        <br>
+
+        <h3>Encoding</h3>
+        <p>
+            Utilising C#'s Encoding class, Submerge can encode, and decode, data in five different formats: ASCII,
+            Latin1, Unicode, UTF8 and UTF32. The main purpose to this is to make data unreadable to prying eyes.
+        </p>
+        <br>
+
+        <h3>Encryption</h3>
+        <p>
+            Submerge can encrypt and decrypt data to modern standards by using C#'s AES class.
+        </p>
+        <br>
+
+        <h3>Data Drowning</h3>
+        <p>
+            Data Drowning is a feature of Submerge which allows data to be mixed into a randomly generated collection of
+            data,
+            effectively "drowning" the data and making it unreadable, as well as difficult to recover without the
+            correct Drown Key.
+        </p>
+    </div>
+
+    <div class="section" id="setup">
+        <h2>Setup</h2>
+        <p>Follow these steps to start using Submerge. If you aren't using Visual Studio, these steps may vary. Check
+            your IDE's documentation for details on adding libraries to projects.</p>
+        <ol>
+            <li>Download Submerge from <a href="https://github.com/akilgour350/Submerge">here.</a></li>
+            <li>Add the library to your project by going to <mark class="code">Project > Add Project Reference >
+                    Browse</mark> then
+                locate and select the file <mark class="code">Vega.Submerge.dll</mark> which you downloaded.</li>
+            <li>Import the library into your code. In C#, this can be done with the following code:</li>
+        </ol>
+        <div class="codesection">
+            <mark class="keyword">using</mark> Vega.Submerge;
+        </div>
+        <p>You now have access to the classes contained within the libary.</p>
+    </div>
+
+    <div class="section" id="classes">
+        <h2>Classes</h2>
+        <p>
+            Submerge contains four classes, each of which carries out the operations for one of Submerge's four main
+            features. These classes are mostly self-explanatory, and are: <mark class="code">FileHandling</mark>, <mark
+                class="code">SEncoding</mark>, <mark class="code">SEncrypting</mark>,
+            <mark class="code">SDrown</mark> and <mark class="code">SMaster</mark>.
+        </p>
+        <p>The <mark class="code">FileHandling</mark> class handles operations for reading and writing to files.</p>
+        <p>The <mark class="code">SEncoding</mark> class is used to handle encoding and decoding operations. It makes
+            use of the <mark class="code">SEncoder</mark> enum to choose from which of the various encoders to use.</p>
+        <p>The <mark class="code">SEncrypting</mark> class handles all operations with regards to encryption and
+            decryption.</p>
+        <p>The <mark class="code">SDrown</mark> class handles all operations regarding Data Drowning.</p>
+        <p>The <mark class="code">SMaster</mark> class allows for easily combining functions, such as drowning and
+            encoding.</p>
+    </div>
+
+    <div class="section" id="filehandling">
+        <h2>File Handling</h2>
+        <p>One of the most basic features of Submerge is its file handling. All file handling operations take place in
+            the <mark class="code">FileHandling</mark> class. In C#, this can be created with the following code:</p>
+        <div class="codesection">
+            <mark class="type">FileHandling</mark> <mark class="var">fileHandling</mark> = <mark
+                class="keyword">new</mark> <mark class="type">FileHandling</mark>();
+        </div>
+        <p>Ensure you have completed the setup outlined <a href="#setup">above</a> first.</p>
+
+        <div class="customhr"></div>
+
+        <h3>Reading From Files</h3>
+        <p>Submerge contains two methods for reading in text from a file: <mark class="code">StringFromFile</mark> and
+            <mark class="code">ListFromFile</mark>.
+        </p>
+
+        <p>
+            The <mark class="code">StringFromFile</mark> method is used to read in a string containing a file's complete
+            contents. The method takes only one parameter: the directory of the file to be read from. The method returns
+            a string if successful. If an error occurs, the error message is printed to the console and the method
+            returns <mark class="code">string.Empty</mark>.
+            In C#, the method can be called like this:
+        <div class="codesection"><mark class="keyword">string</mark> <mark class="var">stringReadFromFile</mark> = <mark
+                class="var">fileHandling</mark>.<mark class="method">StringFromFile</mark>(<mark
+                class="value">@"myfile.txt"</mark>);</div>
+        </p>
+
+        <p>
+            The <mark class="code">ListFromFile</mark> method is used to read in a List of strings from a file. Each
+            item in the List corresponds to a line from the file. The method takes only one parameter: the directory of
+            the file to be read from. The method returns a List of strings if successful. If an error occurs, the error
+            message is printed to the console and the method returns an empty List. In C#, the method can be called like
+            this:
+        </p>
+        <div class="codesection"><mark class="type">List</mark>&lt<mark class="keyword">string</mark>&gt <mark
+                class="var">listReadFromFile</mark> = <mark class="var">fileHandling</mark>.<mark
+                class="method">ListFromFile</mark>(<mark class="value">@"myfile.txt"</mark>);</div>
+
+        <div class="customhr"></div>
+
+        <h3>Writing to Files</h3>
+        <p>Submerge contains three methods for writing to files: <mark class="code">AddToFile</mark>, <mark
+                class="code">OverwriteToFile</mark> and <mark class="code">ListToFile</mark>.</p>
+
+        <p>
+            The <mark class="code">AddToFile</mark> method is used to write a string onto the end of an existing file.
+            The method takes two parameters: the text to be written to the file and the directory of the file. The
+            method returns a boolean stating whether the execution was a success or not. If no errors occured, the
+            method returns <mark class="code">true</mark>. Otherwise, the error message is printed to the console and
+            the method returns <mark class="code">false</mark>. In C#, the method can be called like this:
+        </p>
+
+        <div class="codesection"><mark class="keyword">bool</mark> <mark class="var">result</mark> =
+            fileHandling</mark>.<mark class="method">AddToFile</mark>(<mark class="value">"Text to write."</mark>, <mark
+                class="value">@"myfile.txt"</mark>);</div>
+
+        <p>
+            The <mark class="code">OverwriteToFile</mark> method is used to overwrite the contents of a file with the
+            provided string. The method takes two parameters: the text to be written to the file and the directory of
+            the file. The method returns a boolean stating whether the execution was a success or not. If no errors
+            occured, the
+            method returns <mark class="code">true</mark>. Otherwise, the error message is printed to the console and
+            the method returns <mark class="code">false</mark>. In C#, the method can be called like this:
+        </p>
+        <div class="codesection"><mark class="keyword">bool</mark> <mark class="var">result</mark> =
+            fileHandling</mark>.<mark class="method">OverwriteToFile</mark>(<mark class="value">"Text to write."</mark>,
+            <mark class="value">@"myfile.txt"</mark>);
+        </div>
+
+        <p>The <mark class="code">ListToFile</mark> method is used to write the contents of a list to a file. Each item
+            in the list is added as a new line to the file. The method takes two parameters: the List of strings to be
+            written to the file, and the directory of the file to be written to. The
+            method returns a boolean stating whether the execution was a success or not. If no errors occured, the
+            method returns <mark class="code">true</mark>. Otherwise, the error message is printed to the console and
+            the method returns <mark class="code">false</mark>. In C#, the method can be called like this:</p>
+
+        <div class="codesection"><mark class="keyword">bool</mark> <mark class="var">result</mark> =
+            fileHandling</mark>.<mark class="method">ListToFile</mark>(<mark class="var">myListObject</mark>,
+            <mark class="value">@"myfile.txt"</mark>);
+        </div>
+    </div>
+
+    <div class="section" id="encoding">
+        <h2>Encoding and Decoding</h2>
+        <p>Submerge has functionality to encode and decode strings in one of five formats: ASCII, Latin1, Unicode, UTF-8
+            and UTF-32. All encoding operations are handled by the <mark class="code">SEncoding</mark> class. In C#,
+            this can be created with the following code:</p>
+        <div class="codesection">
+            <mark class="type">SEncoding</mark> <mark class="var">fileHandling</mark> = <mark class="keyword">new</mark>
+            <mark class="type">SEncoding</mark>();
+        </div>
+        <p>Ensure you have completed the setup outlined <a href="#setup">above</a> first.</p>
+
+        <div class="customhr"></div>
+
+        <h3>The SEncoder Enum</h3>
+        <p>
+            As Submerge supports multiple forms of encoding, it contains the <mark class="code">SEncoder</mark> enum.
+            The
+            enum is used to select between the different encoding types mentioned above. The five values that can be
+            assigned are: <mark class="code">ASCII</mark>, <mark class="code">Latin1</mark>, <mark
+                class="code">Unicode</mark>, <mark class="code">UTF8</mark> and <mark class="code">UTF32</mark>. In C#,
+            the enum can be created, and given a value, like this:
+        </p>
+        <div class="codesection">
+            <mark class="type">SEncoder</mark> <mark class="var">encoder</mark> = <mark
+                class="type">SEncoder</mark>.<mark class="value">ASCII</mark>;
+        </div>
+
+        <div class="customhr"></div>
+
+        <h3>Encoding</h3>
+        <p>
+            Submerge contains a method, with one overload, for encoding strings: <mark class="code">Encode</mark>.
+        </p>
+        <p>
+            The standard <mark class="code">Encode</mark> method takes one parameter: the string to be encoded. It will
+            return a string containing the original text encoded using UTF-8. An error may be thrown if the string
+            contains characters not compatible with UTF-8, in which case the error message will be written to the
+            console and the method will return <mark class="code">string.Empty</mark>. In C#, this method can be called
+            like this:
+        </p>
+        <div class="codesection">
+            <mark class="keyword">string</mark> <mark class="var">encodedString</mark> = <mark
+                class="var">encoder</mark>.<mark class="method">Encode</mark>(<mark class="value">"text to
+                encode"</mark>);
+        </div>
+
+        <p>The overload for the <mark class="code">Encode</mark> method allows the encoder to be specified using the
+            <mark class="code">SEncoder</mark> enum. It takes two parameters: the text to be encoded, and an enum
+            determining the encoding format to be used. It will return a string containing the original text encoded
+            using
+            the chosen encoding format. An error may be thrown if the string
+            contains characters not compatible with the chosen format, in which case the error message will be written
+            to the
+            console and the method will return <mark class="code">string.Empty</mark>. In C#, this method can be called
+            like this:
+        </p>
+        <div class="codesection">
+            <mark class="keyword">string</mark> <mark class="var">encodedString</mark> = <mark
+                class="var">encoder</mark>.<mark class="method">Encode</mark>(<mark class="value">"text to
+                encode"</mark>, <mark class="type">SEncoder</mark>.<mark class="value">ASCII</mark>);
+        </div>
+
+        <div class="customhr"></div>
+
+        <h3>Decoding</h3>
+        <p>Submerge also contains a method, with one overload, for decoding strings: <mark class="code">Decode</mark>.
+        </p>
+        <p>The standard <mark class="code">Decode</mark> method takes one parameter: the string to be decoded. It will
+            return a string containing the original string decoded using UTF-8. An error may be thrown if the string
+            contains characters not compatible with UTF-8. If an error is thrown, the message will be printed to the
+            console and the method will
+            return <mark class="code">string.Empty</mark>. In C#, this method can be called like this:
+        </p>
+        <div class="codesection">
+            <mark class="keyword">string</mark> <mark class="var">decodedString</mark> = <mark
+                class="var">encoder</mark>.<mark class="method">Decode</mark>(<mark
+                class="value">"dGV4dCB0byBkZWNvZGU="</mark>);
+        </div>
+
+        <p>The overload for the <mark class="code">Decode</mark> method allows the decoder to be specified using the
+            <mark class="code">SEncoder</mark> enum. It takes two parameters: the text to be decoded and an enum
+            determining the decoding format to be used. It will return a string containing the original string decoded
+            using the chosen format. An error may be thrown if the string contains characters not compatible with the
+            chosen format. If an error is
+            thrown, the message will be printed to the console and the method will
+            return <mark class="code">string.Empty</mark>. In C#, this method can be called like this:
+        </p>
+        <div class="codesection">
+            <mark class="keyword">string</mark> <mark class="var">decodedString</mark> = <mark
+                class="var">encoder</mark>.<mark class="method">Decode</mark>(<mark
+                class="value">"dGV4dCB0byBkZWNvZGU="</mark>, <mark class="type">SEncoder</mark>.<mark
+                class="value">ASCII</mark>);
+        </div>
+
+        <div class="customhr"></div>
+
+        <h3>Common Errors</h3>
+        <p>
+            The most common error which will be encountered, when using encoding and decoding, will be if the string
+            passed to the method contains characters not compatible with the chosen encoding format. Through some quick
+            experimentation, UTF-8 appears to encounter this error the least out of the five formats, hence it is the
+            default. If you encounter this error, try a different encoding type.
+        </p>
+        <p>
+            The other error which may be encountered is if the passed string is <mark class="code">null</mark>. Submerge
+            does not currently check to ensure parameters are not null, although this functionality may be added later.
+        </p>
+    </div>
+
+
+    <div class="section" id="encryption">
+        <h2>Encryption and Decryption</h2>
+        <p>Submerge has the ability to encrypt and decrypt strings using its <mark class="code">SEncrypting</mark> class. In C#, this can be created using the following code:</p>
+        <div class="codesection">
+            <mark class="type">SEncrypting</mark> <mark class="var">fileHandling</mark> = <mark
+                class="keyword">new</mark> <mark class="type">SEncrypting</mark>();
+        </div>
+        <p>Ensure you have completed the setup outlined <a href="#setup">above</a> first.</p>
+    </div>
+
+
+
+
+    <div class="section" id="encryption">
+        <h2>Data Drowning</h2>
+        <p>Submerge has the ability to "drown" data using its <mark class="code">SDrowning</mark></p>
+        <div class="codesection">
+            <mark class="type">SEncrypting</mark> <mark class="var">fileHandling</mark> = <mark
+                class="keyword">new</mark> <mark class="type">SEncrypting</mark>();
+        </div>
+        <p>Ensure you have completed the setup outlined <a href="#setup">above</a> first.</p>
     </div>
 </body>
 

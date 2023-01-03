@@ -19,17 +19,22 @@ li {
     font-size: 14pt;
 }
 
-mark {
+li {
+    margin-bottom: 2px;
+}
+
+.code {
     background-color: rgb(153, 153, 153);
     color:rgb(44, 42, 42);
     padding-left: 3pt;
     padding-right: 3pt;
     border-radius: 4px;
+    margin-left: 1px;
+    margin-right: 1px;
 }
 
 .clicklist {
     background-color: none;
-    cursor: pointer;
     color: rgb(216, 216, 216);
     font-size: 14pt;
     border-radius: 5px;
@@ -101,6 +106,54 @@ mark {
     animation-duration: 2s;
     animation-iteration-count: infinite;
 }
+
+.codesection {
+    background-color: #221e1e;
+    color:#ffffff;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14pt;
+    margin-bottom: 20px;
+    font-family:'Courier New', Courier, monospace;
+}
+
+.codesection .type {
+    color: #62ecbe;
+    background: none;
+}
+
+.codesection .var {
+    color: #79ceff;
+    background: none;
+}
+
+.codesection .keyword {
+    color: #7048ff;
+    background: none;
+}
+
+.codesection .comment {
+    color:#04aa28;
+    background: none;
+}
+
+.codesection .method {
+    color: #ecd824;
+    background: none;
+}
+
+.codesection .value {
+    color: #eb8704;
+    background: none;
+}
+
+.customhr {
+    border-color: rgb(136, 136, 136);
+    border-width: 1px;
+    border-style: solid;
+    margin-top: 30px;
+}
+
 
 .linksection {
     text-decoration: none;
