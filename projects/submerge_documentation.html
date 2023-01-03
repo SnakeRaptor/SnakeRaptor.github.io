@@ -318,10 +318,6 @@
             experimentation, UTF-8 appears to encounter this error the least out of the five formats, hence it is the
             default. If you encounter this error, try a different encoding type.
         </p>
-        <p>
-            The other error which may be encountered is if the passed string is <mark class="code">null</mark>. Submerge
-            does not currently check to ensure parameters are not null, although this functionality may be added later.
-        </p>
     </div>
 
 
@@ -330,10 +326,52 @@
         <p>Submerge has the ability to encrypt and decrypt strings using its <mark class="code">SEncrypting</mark>
             class. In C#, this can be created using the following code:</p>
         <div class="codesection">
-            <mark class="type">SEncrypting</mark> <mark class="var">fileHandling</mark> = <mark
-                class="keyword">new</mark> <mark class="type">SEncrypting</mark>();
+            <mark class="type">SEncrypting</mark> <mark class="var">encrypter</mark> = <mark class="keyword">new</mark>
+            <mark class="type">SEncrypting</mark>();
         </div>
         <p>Ensure you have completed the setup outlined <a href="#setup">above</a> first.</p>
+
+        <div class="customhr"></div>
+
+        <h3>Key Generation</h3>
+        <p>In order to carry out any encryption or decryption operations, you will be required to pass in both a key and
+            an initialisation vector (IV). Submerge comes with the <mark class="code">GenerateKey</mark> method. The
+            method returns an array of bytes which can be used as either the key or the IV. In C#, the method can be
+            called like this:
+        </p>
+        <div class="codesection">
+            <mark class="keyword">byte</mark>[] <mark class="var">keyOrIV</mark> = <mark
+                class="var">encrypter</mark>.<mark class="method">GenerateKey</mark>();
+        </div>
+
+        <div class="customhr"></div>
+
+        <h3>Encryption</h3>
+        <p>The <mark class="code">SEncrypting</mark> class contains the <mark class="code">Encrypt</mark> method to
+            handle the encryption of data. The method requires three parameters: the string to be encrypted, the array
+            of bytes containing the key, and the array of bytes containing the IV. The method returns an array of bytes
+            containing the encrypted string. If an error is thrown in the method, the message is written to the console
+            and an empty array is returned. In C#, this method can be called like this:
+        </p>
+        <div class="codesection">
+            <mark class="keyword">byte</mark>[] <mark class="var">encryptedBytes</mark> = <mark
+                class="var">encrypter</mark>.<mark class="method">Encrypt</mark>(<mark class="value">"text to
+                encrypt"</mark>, <mark class="var">key</mark>, <mark class="var">iv</mark>);
+        </div>
+
+        <div class="customhr"></div>
+
+        <h3>Decryption</h3>
+        <p>The <mark class="code">SEncrypting</mark> class contains the <mark class="code">Decrypt</mark> method to
+            handle the decryption of encrypted data. The method takes three parameters: the array of encrypted bytes,
+            the array of bytes containing the key used to encrypt the original string, and the array of bytes containing
+            the IV used to encrypt the original string. The method returns a string containing the decrypted text. If an error is thrown in the method, the message is written to the console
+            and <mark class="code">string.Empty</mark>> is returned. In C#, this method can be called like this:
+        </p>
+        <div class="codesection">
+            <mark class="keyword">string</mark> <mark class="var">decryptedString</mark> = <mark
+                class="var">encrypter</mark>.<mark class="method">Decrypt</mark>(<mark class="var">bytesToDecrypt</mark>, <mark class="var">key</mark>, <mark class="var">iv</mark>);
+        </div>
     </div>
 
 
@@ -341,7 +379,8 @@
 
     <div class="section" id="encryption">
         <h2>Data Drowning</h2>
-        <p>Submerge has the ability to "drown" data using its <mark class="code">SDrowning</mark> class. An instance of the class can be created with the following code in C#:</p>
+        <p>Submerge has the ability to "drown" data using its <mark class="code">SDrowning</mark> class. An instance of
+            the class can be created with the following code in C#:</p>
         <div class="codesection">
             <mark class="type">SDrowning</mark> <mark class="var">drowning</mark> = <mark class="keyword">new</mark>
             <mark class="type">SDrowning</mark>();
