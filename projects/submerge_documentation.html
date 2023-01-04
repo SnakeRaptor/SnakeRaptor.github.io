@@ -127,7 +127,7 @@
             use of the <mark class="code">SEncoder</mark> enum to choose from which of the various encoders to use.</p>
         <p>The <mark class="code">SEncrypting</mark> class handles all operations with regards to encryption and
             decryption.</p>
-        <p>The <mark class="code">SDrown</mark> class handles all operations regarding Data Drowning.</p>
+        <p>The <mark class="code">SDrowning</mark> class handles all operations regarding Data Drowning.</p>
         <p>The <mark class="code">SMaster</mark> class allows for easily combining functions, such as drowning and
             encoding.</p>
     </div>
@@ -145,7 +145,8 @@
         <div class="customhr"></div>
 
         <h3>Reading From Files</h3>
-        <p>Submerge contains two methods for reading in text from a file: <mark class="code">StringFromFile</mark> and
+        <p><mark class="code">FileHandling</mark> contains two methods for reading in text from a file: <mark
+                class="code">StringFromFile</mark> and
             <mark class="code">ListFromFile</mark>.
         </p>
 
@@ -174,8 +175,9 @@
         <div class="customhr"></div>
 
         <h3>Writing to Files</h3>
-        <p>Submerge contains three methods for writing to files: <mark class="code">AddToFile</mark>, <mark
-                class="code">OverwriteToFile</mark> and <mark class="code">ListToFile</mark>.</p>
+        <p><mark class="code">FileHandling</mark> contains three methods for writing to files: <mark
+                class="code">AddToFile</mark>, <mark class="code">OverwriteToFile</mark> and <mark
+                class="code">ListToFile</mark>.</p>
 
         <p>
             The <mark class="code">AddToFile</mark> method is used to write a string onto the end of an existing file.
@@ -186,7 +188,7 @@
         </p>
 
         <div class="codesection"><mark class="keyword">bool</mark> <mark class="var">result</mark> =
-            fileHandling</mark>.<mark class="method">AddToFile</mark>(<mark class="value">"Text to write."</mark>, <mark
+            fileHandling</mark>.<mark class="method">AddToFile</mark>(<mark class="value">"text to write."</mark>, <mark
                 class="value">@"myfile.txt"</mark>);</div>
 
         <p>
@@ -198,7 +200,7 @@
             the method returns <mark class="code">false</mark>. In C#, the method can be called like this:
         </p>
         <div class="codesection"><mark class="keyword">bool</mark> <mark class="var">result</mark> =
-            fileHandling</mark>.<mark class="method">OverwriteToFile</mark>(<mark class="value">"Text to write."</mark>,
+            fileHandling</mark>.<mark class="method">OverwriteToFile</mark>(<mark class="value">"text to write."</mark>,
             <mark class="value">@"myfile.txt"</mark>);
         </div>
 
@@ -239,14 +241,15 @@
         </p>
         <div class="codesection">
             <mark class="type">SEncoder</mark> <mark class="var">encoder</mark> = <mark
-                class="type">SEncoder</mark>.<mark class="value">ASCII</mark>;
+                class="type">SEncoder</mark>.<mark class="value">UTF8</mark>;
         </div>
 
         <div class="customhr"></div>
 
         <h3>Encoding</h3>
         <p>
-            Submerge contains a method, with one overload, for encoding strings: <mark class="code">Encode</mark>.
+            <mark class="code">SEncoding</mark> contains a method, with one overload, for encoding strings: <mark
+                class="code">Encode</mark>.
         </p>
         <p>
             The standard <mark class="code">Encode</mark> method takes one parameter: the string to be encoded. It will
@@ -280,11 +283,12 @@
         <div class="customhr"></div>
 
         <h3>Decoding</h3>
-        <p>Submerge also contains a method, with one overload, for decoding strings: <mark class="code">Decode</mark>.
+        <p><mark class="code">SEncoding</mark> also contains a method, with one overload, for decoding strings: <mark
+                class="code">Decode</mark>.
         </p>
         <p>The standard <mark class="code">Decode</mark> method takes one parameter: the string to be decoded. It will
-            return a string containing the original string decoded using UTF-8. An error may be thrown if the string
-            contains characters not compatible with UTF-8. If an error is thrown, the message will be printed to the
+            return a string containing the original string decoded using UTF-8. If an error is thrown, the message will
+            be printed to the
             console and the method will
             return <mark class="code">string.Empty</mark>. In C#, this method can be called like this:
         </p>
@@ -335,7 +339,8 @@
 
         <h3>Key Generation</h3>
         <p>In order to carry out any encryption or decryption operations, you will be required to pass in both a key and
-            an initialisation vector (IV). Submerge comes with the <mark class="code">GenerateKey</mark> method. The
+            an initialisation vector (IV). <mark class="code">SEncrypting</mark> comes with the <mark
+                class="code">GenerateKey</mark> method. The
             method returns an array of bytes which can be used as either the key or the IV. In C#, the method can be
             called like this:
         </p>
@@ -367,7 +372,7 @@
             the array of bytes containing the key used to encrypt the original string, and the array of bytes containing
             the IV used to encrypt the original string. The method returns a string containing the decrypted text. If an
             error is thrown in the method, the message is written to the console
-            and <mark class="code">string.Empty</mark>> is returned. In C#, this method can be called like this:
+            and <mark class="code">string.Empty</mark> is returned. In C#, this method can be called like this:
         </p>
         <div class="codesection">
             <mark class="keyword">string</mark> <mark class="var">decryptedString</mark> = <mark
@@ -410,7 +415,7 @@
 
         <h3>Drown Keys</h3>
         <p>A Drown Key is used to determine the position of a character within the string it has been allocated when
-            drowned. The drown key is an array of integers, up to 16 items long. The <mark class="code">SDrowning</mark>
+            drowned. The drown key is an array of up to 16 integers. The <mark class="code">SDrowning</mark>
             class contains the <mark class="code">GenerateDrownKey</mark> method to create the drown key automatically.
             The method takes one parameter: the length of the string being drowned. If this parameter is above 16, the
             method will reduce its value to 16. If the parameter is less than 1, an error message will be printed to the
@@ -476,8 +481,8 @@
         <p>The <mark class="code">SMaster</mark> class contains a method for combining data drowning and encoding. The
             <mark class="code">DrownAndEncode</mark> method takes two parameters: the string to be processed, and the
             drown key. The string will be drowned, using the drown key, then the resulting array encoded with UTF-8.
-            Drowning is only compatible with UTF-8 as other formats are incompatible with some of the characters
-            generated during the process. The method returns an array of strings containing the drowned and encoded
+            Drowning is only compatible with UTF-8 as other formats cannot handle some of the characters generated
+            during the process. The method returns an array of strings containing the drowned and encoded
             data. If an error occurs, the error message is printed to the console and the method returns an empty
             string. In C#, this method can be called like this:
         </p>
@@ -489,10 +494,10 @@
             <mark class="var">drownKey</mark>);
         </div>
 
-        <p>The <mark class="code">SMaster</mark> also contains the <mark class="code">DecodeAndRescue</mark> method to
+        <p>The <mark class="code">SMaster</mark> class also contains the <mark class="code">DecodeAndRescue</mark> method to
             decode and rescue the data. The method takes two parameters: the array of strings containing the drowned
-            data, and the drown key used to drown it. The method will then decode the array using UTF-8, then rescue it
-            using the drown key, returning the original string. If an error occurs, the message is printed to the
+            data, and the drown key used to drown it. The method will then decode the array using UTF-8, rescue it
+            using the drown key, and return the original string. If an error occurs, the message is printed to the
             console and the method returns <mark class="code">string.Empty</mark>. In C#, this method can be called like
             so:</p>
 
@@ -530,7 +535,7 @@
 
         <h3>v1.0.5</h3>
         <ul>
-            <li>Renamed <mark class="code">SEncrypter</mark> class to SEncrypting</li>
+            <li>Renamed <mark class="code">SEncrypter</mark> class to <mark class="code">SEncrypting</mark></li>
             <li>Renamed <mark class="code">SDrown</mark> class to <mark class="code">SDrowning</mark></li>
         </ul>
 
@@ -562,7 +567,7 @@
         <ul>
             <li>File Handling</li>
             <li>Encoding and Decoding</li>
-            <li>Encryption and Decryption</li>      
+            <li>Encryption and Decryption</li>
             <li>Data Drowning</li>
         </ul>
         </p>
