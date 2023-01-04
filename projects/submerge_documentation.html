@@ -55,6 +55,8 @@
             <li><a href="#filehandling">File Handling</a></li>
             <li><a href="#encoding">Encoding and Decoding</a></li>
             <li><a href="#encryption">Encryption and Decryption</a></li>
+            <li><a href="#drowning">Data Drowning</a></li>
+            <li><a href="#combining">Combining Functionality</a></li>
         </ol>
         </p>
     </div>
@@ -111,7 +113,8 @@
         <div class="codesection">
             <mark class="keyword">using</mark> Vega.Submerge;
         </div>
-        <p>You now have access to the classes contained within the libary.</p>
+        <p>You now have access to the classes contained within the libary. Please remember to give me, Alastair Kilgour,
+            some credit in your code!</p>
     </div>
 
     <div class="section" id="classes">
@@ -365,19 +368,21 @@
         <p>The <mark class="code">SEncrypting</mark> class contains the <mark class="code">Decrypt</mark> method to
             handle the decryption of encrypted data. The method takes three parameters: the array of encrypted bytes,
             the array of bytes containing the key used to encrypt the original string, and the array of bytes containing
-            the IV used to encrypt the original string. The method returns a string containing the decrypted text. If an error is thrown in the method, the message is written to the console
+            the IV used to encrypt the original string. The method returns a string containing the decrypted text. If an
+            error is thrown in the method, the message is written to the console
             and <mark class="code">string.Empty</mark>> is returned. In C#, this method can be called like this:
         </p>
         <div class="codesection">
             <mark class="keyword">string</mark> <mark class="var">decryptedString</mark> = <mark
-                class="var">encrypter</mark>.<mark class="method">Decrypt</mark>(<mark class="var">bytesToDecrypt</mark>, <mark class="var">key</mark>, <mark class="var">iv</mark>);
+                class="var">encrypter</mark>.<mark class="method">Decrypt</mark>(<mark
+                class="var">bytesToDecrypt</mark>, <mark class="var">key</mark>, <mark class="var">iv</mark>);
         </div>
     </div>
 
 
 
 
-    <div class="section" id="encryption">
+    <div class="section" id="drowning">
         <h2>Data Drowning</h2>
         <p>Submerge has the ability to "drown" data using its <mark class="code">SDrowning</mark> class. An instance of
             the class can be created with the following code in C#:</p>
@@ -386,12 +391,34 @@
             <mark class="type">SDrowning</mark>();
         </div>
         <p>Ensure you have completed the setup outlined <a href="#setup">above</a> first.</p>
+
+        <div class="customhr"></div>
+
+        <h3>What is Date Drowning?</h3>
+        <p>
+            Data Drowning is when a section of data, usually a string, is mixed into a collection of fake data. This is
+            done by randomly generating an array of strings, and placing each character from the data into one of the
+            strings. A Drown Key is used to determine the position of the character within each string. Using this key,
+            the original data can then be Rescued from the scambled collection.
+        </p>
+        <p>
+            Performing Data
+            Drowning on large volumes of data is not a good idea if the storage space being used is limited, as it
+            requires sixteen bytes for every one byte stored. It is also advisable to combine Data Drowning with other
+            forms of security, such as encoding or encryption. However, it adds an extra layer of security which can
+            make it harder to access data.
+        </p>
+
+        <div class="customhr"></div>
+
+        <h3>Drowning</h3>
+        <p>The <mark class="code">SDrowning</mark> class contains the <mark class="code">Drown</mark> method for </p>
     </div>
 
 
 
 
-    <div class="section" id="encryption">
+    <div class="section" id="combining">
         <h2>Combining Functionality</h2>
         <p>Submerge's <mark class="code">SMaster</mark> class makes it easy to combine the multiple functions of
             Submerge, such as data drowning and encoding. You can create a new instance of the class, in C#, with this
