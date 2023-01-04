@@ -39,11 +39,6 @@
         <p>This page contains the documentation for my file handling and encryption library, Submerge.</p>
     </div>
 
-    <div class="sectionwarning">
-        <h2>Work-In-Progress</h2>
-        <p>The documentation for Submerge is currently incomplete. However, it is being actively worked on.</p>
-    </div>
-
     <div class="section">
         <h2>Contents</h2>
         <p>
@@ -57,6 +52,8 @@
             <li><a href="#encryption">Encryption and Decryption</a></li>
             <li><a href="#drowning">Data Drowning</a></li>
             <li><a href="#combining">Combining Functionality</a></li>
+            <li><a href="#updates">Planned Features</a></li>
+            <li><a href="#changelog">Changelog</a></li>
         </ol>
         </p>
     </div>
@@ -387,7 +384,7 @@
         <p>Submerge has the ability to "drown" data using its <mark class="code">SDrowning</mark> class. An instance of
             the class can be created with the following code in C#:</p>
         <div class="codesection">
-            <mark class="type">SDrowning</mark> <mark class="var">drowning</mark> = <mark class="keyword">new</mark>
+            <mark class="type">SDrowning</mark> <mark class="var">drowner</mark> = <mark class="keyword">new</mark>
             <mark class="type">SDrowning</mark>();
         </div>
         <p>Ensure you have completed the setup outlined <a href="#setup">above</a> first.</p>
@@ -411,8 +408,52 @@
 
         <div class="customhr"></div>
 
+        <h3>Drown Keys</h3>
+        <p>A Drown Key is used to determine the position of a character within the string it has been allocated when
+            drowned. The drown key is an array of integers, up to 16 items long. The <mark class="code">SDrowning</mark>
+            class contains the <mark class="code">GenerateDrownKey</mark> method to create the drown key automatically.
+            The method takes one parameter: the length of the string being drowned. If this parameter is above 16, the
+            method will reduce its value to 16. If the parameter is less than 1, an error message will be printed to the
+            console and the method will return an empty array. The method returns an array of integers to be used as the
+            drown key. In C#, this method can be called like this:</p>
+
+        <div class="codesection">
+            <mark class="keyword">int</mark>[] <mark class="var">drownKey</mark> = <mark
+                class="var">drowner</mark>.<mark class="method">GenerateDrownKey</mark>(<mark
+                class="var">stringToDrown.Length</mark>);
+        </div>
+
+
+        <div class="customhr"></div>
+
         <h3>Drowning</h3>
-        <p>The <mark class="code">SDrowning</mark> class contains the <mark class="code">Drown</mark> method for </p>
+        <p>The <mark class="code">SDrowning</mark> class contains the <mark class="code">Drown</mark> method for
+            performing a drowning operation on a string. The method takes two parameters: the string to be drowned, and
+            the array of integers containing the drown key. The method returns an array of strings containing the
+            drowned data. If an error occurs, the error message is printed to the console and an empty array is
+            returned. In C#, this method can be called like this.</p>
+
+        <div class="codesection">
+            <mark class="keyword">string</mark>[] <mark class="var">drownedData</mark> = <mark
+                class="var">drowner</mark>.<mark class="method">Drown</mark>(<mark class="var">"text to drown"</mark>,
+            <mark class="var">drownKey</mark>);
+        </div>
+
+        <div class="customhr"></div>
+
+        <h3>Rescuing</h3>
+        <p>Rescuing data is the process of retrieving the drowned data from the array of strings. The <mark
+                class="code">SDrowning</mark> class contains the <mark class="code">Rescue</mark> method for doing this.
+            The method takes two parameters: the array of strings containing the drowned data, and the drown key used to
+            drown the data. The method will return a string containing the drowned data. If an error occurs, the error
+            message is printed to the console and the method returns <mark class="code">string.Empty</mark>. In C#, this
+            method can be called like this:</p>
+
+        <div class="codesection">
+            <mark class="keyword">string</mark> <mark class="var">rescuedData</mark> = <mark
+                class="var">drowner</mark>.<mark class="method">Rescue</mark>(<mark class="var">drownedArray</mark>,
+            <mark class="var">drownKey</mark>);
+        </div>
     </div>
 
 
@@ -428,6 +469,103 @@
                 class="type">SMaster</mark>();
         </div>
         <p>Ensure you have completed the setup outlined <a href="#setup">above</a> first.</p>
+
+        <div class="customhr"></div>
+
+        <h3>Drowning and Encoding</h3>
+        <p>The <mark class="code">SMaster</mark> class contains a method for combining data drowning and encoding. The
+            <mark class="code">DrownAndEncode</mark> method takes two parameters: the string to be processed, and the
+            drown key. The string will be drowned, using the drown key, then the resulting array encoded with UTF-8.
+            Drowning is only compatible with UTF-8 as other formats are incompatible with some of the characters
+            generated during the process. The method returns an array of strings containing the drowned and encoded
+            data. If an error occurs, the error message is printed to the console and the method returns an empty
+            string. In C#, this method can be called like this:
+        </p>
+
+        <div class="codesection">
+            <mark class="keyword">string</mark>[] <mark class="var">drownedAndEncoded</mark> = <mark
+                class="var">master</mark>.<mark class="method">DrownAndEncode</mark>(<mark class="var">"text to
+                drown"</mark>,
+            <mark class="var">drownKey</mark>);
+        </div>
+
+        <p>The <mark class="code">SMaster</mark> also contains the <mark class="code">DecodeAndRescue</mark> method to
+            decode and rescue the data. The method takes two parameters: the array of strings containing the drowned
+            data, and the drown key used to drown it. The method will then decode the array using UTF-8, then rescue it
+            using the drown key, returning the original string. If an error occurs, the message is printed to the
+            console and the method returns <mark class="code">string.Empty</mark>. In C#, this method can be called like
+            so:</p>
+
+        <div class="codesection">
+            <mark class="keyword">string</mark> <mark class="var">decodedAndRescued</mark> = <mark
+                class="var">master</mark>.<mark class="method">DecodeAndRescue</mark>(<mark
+                class="var">drownedArray</mark>,
+            <mark class="var">drownKey</mark>);
+        </div>
+    </div>
+
+    <div class="section" id="updates">
+        <h2>Planned Features</h2>
+        <p>A number of features are planned to make Submerge better, and even more useful. These will take a little time
+            to work on, so please be patient.</p>
+        <ul>
+            <li>Combined Drowning and Encryption</li>
+            <li>Direct reading and writing encoded and encrypted files</li>
+            <li>Reading and writing Dictionaries to files</li>
+            <li>Encryption using other alogrithms</li>
+        </ul>
+    </div>
+
+    <div class="section" id="changelog">
+        <h2>Changelog</h2>
+        <p>Below is a record of all changes made to Submerge since its release.</p>
+
+        <div class="customhr"></div>
+
+        <h3>v1.0.6</h3>
+        <ul>
+            <li>Added error handling to all three methods in the <mark class="code">SDrowning</mark> class</li>
+            <li>Added error handling to both methods in the <mark class="code">SMaster</mark> class</li>
+        </ul>
+
+        <h3>v1.0.5</h3>
+        <ul>
+            <li>Renamed <mark class="code">SEncrypter</mark> class to SEncrypting</li>
+            <li>Renamed <mark class="code">SDrown</mark> class to <mark class="code">SDrowning</mark></li>
+        </ul>
+
+        <h3>v1.0.4</h3>
+        <ul>
+            <li>Updated standard Encoding and Decoding type to UTF-8 (was ASCII)</li>
+            <li>Introduced <mark class="code">SMaster</mark> class</li>
+            <li>Moved methods combining drowning and encoding to <mark class="code">SMaster</mark> class</li>
+        </ul>
+
+        <h3>v1.0.3</h3>
+        <ul>
+            <li>Added error handling to Encode and Decode methods</li>
+        </ul>
+
+        <h3>v1.0.2</h3>
+        <ul>
+            <li>Minor bug fix</li>
+        </ul>
+
+        <h3>v1.0.1</h3>
+        <ul>
+            <li>Changed the name of the <mark class="code">Submerge</mark> class to <mark class="code">SDrown</mark>
+            </li>
+        </ul>
+
+        <h3>v1.0.0 - Initial Release</h3>
+        <p>Initial release containing the following features:
+        <ul>
+            <li>File Handling</li>
+            <li>Encoding and Decoding</li>
+            <li>Encryption and Decryption</li>      
+            <li>Data Drowning</li>
+        </ul>
+        </p>
     </div>
 </body>
 
