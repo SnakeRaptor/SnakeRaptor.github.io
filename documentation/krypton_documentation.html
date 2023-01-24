@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Alastair Kilgour</title>
+    <link rel="stylesheet" href="../styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <div class="headnav">
+        <table>
+            <tr>
+                <td>
+                    <div class="dropdown">
+                        <button class="dropbtn">&#8801</button>
+                        <div class="dropdown-content">
+                            <a href="../index.html">Home</a>
+                            <a href="../aboutme.html">About Me</a>
+                            <a href="../media.html">Social Media</a>
+                            <a href="../projects.html">Projects</a>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <h1>Krypton Documentation</h1>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="bannersection" style="text-align: center; margin-bottom: 40px;">
+        <p>This page contains the documentation for my (deprecated) file handling and encoding library, Krypton.</p>
+    </div>
+
+    <div class="sectionwarning">
+        <h2>Deprecation Warning</h2>
+        <p>Krypton is deprecated! You can continue to use it, and the documentation will remain available. However, there will be no further updates to the library.</p>
+    </div>
+
+    <div class="section">
+        <h2>Contents</h2>
+        <p>
+        <ol>
+            <li><a href="#basicinfo">Basic Information</a></li>
+            <li><a href="#setup">Setup</a></li>
+            <li><a href="#filehandling">Standard File Handling</a></li>
+            <li><a href="#eandd">Encoding and Decoding</a></li>
+            <li><a href="#encfilehandling">File Handling with Encoding</a></li>
+        </ol>
+        </p>
+    </div>
+
+    <div class="section" id="basicinfo">
+        <h2>Basic Information</h2>
+
+        <h3>What is Krypton?</h3>
+        <p>Krypton is a library of methods that can be used for basic file handling, as well as for encoding and
+            decoding strings.</p>
+
+        <br />
+
+        <h3>What encoding does Krypton offer?</h3>
+        <p>Krypton offers basic encoding and decoding using the following formats available through C#'s Encoding
+            class:
+        <ul>
+            <li>ASCII</li>
+            <li>Latin1</li>
+            <li>Unicode</li>
+            <li>UTF-8</li>
+            <li>UTF-32</li>
+        </ul>
+        Please note that these are not true forms of encryption and can be easily decrypted.
+        </p>
+    </div>
+
+
+    <div class="section" id="setup">
+        <h2>Setup</h2>
+
+        <h3>Basic Setup</h3>
+        <p>To use Krypton, you must first add the DLL file as a reference. If you are not using Visual Studio, check
+            your IDE's documentation
+            to see how to add project references. In all IDEs, the final step will be the same. If you are using Visual
+            Studio, you can add a reference by following these steps:</p>
+        <ol>
+            <li>Go to <mark class="code">Project > Add Project Reference > Browse</mark> then locate and select the
+                <mark class="code">Vega.Krypton.dll</mark> file on your computer.
+            </li>
+            <li>Click OK and wait for Visual Studio to add the reference.</li>
+            <li>Finally, import the library to a file or class. If you are using C#, you can do this with the following
+                code:
+                <mark class="code">using Vega.Krypton;</mark>
+            </li>
+        </ol>
+
+        <br />
+
+        <h3>The KryptonType Enum</h3>
+        <p>Before you can use Krypton's encoding features, you will need to create an instance of the
+            <mark class="code">KryptonType</mark> enum. You will pass this in whenever you are creating an instance of the
+            <mark class="code">Krypton</mark> class which is covered later. To create, and configure, the <mark class="code">KryptonType</mark>
+            enum, use the following steps:
+        </p>
+        <ol>
+            <li>Complete the setup process outline above. Otherwise you won't have access to the
+                <mark class="code">KryptonType</mark> enum.
+            </li>
+            <li>Create a new instance of the <mark class="code">KryptonType</mark> enum in the same way you would with any other. In
+                C#, this can be done with the following line of code: <mark class="code">KryptonType kt;</mark></li>
+            <li>Choose the type of encoding you wish to use. This can be done by assigning a value to the newly
+                created enum instance. The values that can be assigned are: <mark class="code">A</mark>, <mark class="code">L</mark>,
+                <mark class="code">U</mark>, <mark class="code">U8</mark> and <mark class="code">U32</mark>. Each corresponds to an
+                encryption type: ASCII, Latin1, Unicode, UTF-8 and UTF-32 respectively. In C#, the value can be assigned
+                with the following code: <mark class="code">kt = KryptonType.A;</mark>
+            </li>
+        </ol>
+
+        <br />
+
+        <h3>The Krypton Class</h3>
+        <p>All of Krypton's encoding functionality is held within its namesake class: <mark class="code">Krypton</mark>. You can
+            create an instance of the <mark class="code">Krypton</mark> class in the same way you would any other class. However, a
+            <mark class="code">KryptonType</mark> enum must be passed into the object when it is created. In C#, this can be done
+            using the following code: <mark class="code">Krypton krypt = new Krypton(kt);</mark>
+        </p>
+    </div>
+
+    <div class="section" id="filehandling">
+        <h2>Standard File Handling</h2>
+        <p>Whilst the primary function of Krypton is its encoding services, the library also contains operations for
+            basic reading and writing to files.</p>
+
+        <br />
+
+        <h3>The UFile Class</h3>
+        <p>Standard file handling functions can be found inside the <mark class="code">UFile</mark> class. You can access these by
+            creating an instance of the class. In C#, this is done with the following code: <mark class="code">UFile uf = new
+                UFile()</mark></p>
+
+        <br />
+
+        <h3>Writing to Files</h3>
+        <p>The <mark class="code">UFile</mark> class comes with two methods for writing to files:
+            <br>The <mark class="code">AppendToFile</mark> method will add text onto the end of an existing file, leaving the rest of
+            the file intact.<br>The <mark class="code">OverwriteToFile</mark> method will erase all text in a file and replace it
+            with with the text passed into it.<br>Both methods require two arguments in the following order:
+        <ol>
+            <li>The directory of the file you wish to write to.</li>
+            <li>The text you wish to write to the file.</li>
+        </ol>
+        </p>
+
+        <br />
+        <h3>Reading from Files</h3>
+        <p>In addition to writing to files, the <mark class="code">UFile</mark> class comes with two methods for reading from files:
+            <mark class="code">ReadFromFile</mark> and <mark class="code">ListFromFile</mark>.
+            <br>The <mark class="code">ReadFromFile</mark> method will return a string containing all of the text in the file within
+            the given directory.
+            <br>The <mark class="code">ListFromFile</mark> method will return a List of string, where each item is a new line. This
+            is especially useful when reading from a CSV, or other basic data storage file.
+            <br>Both methods only reuire one argument: the directory of the file to be read from. Both methods will
+            return <mark class="code">null</mark> if an error occurs, so it is good practice to check the output from the method is
+            not <mark class="code">null</mark>.
+        </p>
+    </div>
+
+    <div class="section" id="eandd">
+        <h2>Encoding and Decoding</h2>
+        <p>The primary function of Krypton is to provide basic encoding to strings. Please note that this is not
+            encryption, and can be decrypted easily. Its purpose is to make strings unreadable.</p>
+
+        <br />
+
+        <h3>The Krypton Class</h3>
+        <p>As mentioned <a href="#setup">before</a>, all of Krypton's encoding and decoding functions are located in
+            the <mark class="code">Krypton</mark> class. Ensure you have set up an instance of the class before continuing.</p>
+
+        <h3>The Encode Method</h3>
+        <p>This method is used to encode a string which is passed to it. To use it in C#, you can use the code:
+            <mark class="code">krypt.Encode(myString);</mark>
+            <br>From here, the string is taken and converted into the format you chose when creating the
+            <mark class="code">Krypton</mark> object. The method then returns the encoded string.
+        </p>
+
+        <h3>The Decode Method</h3>
+        <p>This method is used to decode a string which is passed to it. To use it in C#, you can use the code:
+            <mark class="code">krypt.Decode(myEncryptedString);</mark>
+            <br>From here, the string is taken and converted from the format specified when creating the
+            <mark class="code">Krpyton</mark> object, into a string. This string is then returned.
+            <br>Note that you need to know the type of encoding used for this method to work correctly.
+        </p>
+
+        <h3>The SwitchType Method</h3>
+        <p>
+            This method is used if you wish to change the type of encoding being used by the <mark class="code">Krypton</mark>
+            object. To use it, create a new <mark class="code">KryptonType</mark> enum and call the method, passing the enum as an
+            argument.
+            <br>In C#, this can be done like this: <mark class="code">krypt.SwitchType(kt);</mark>
+        </p>
+    </div>
+
+    <div class="section" id="encfilehandling">
+        <h2>File Handling with Encoding</h2>
+        <p>File handling with encoding works similarly to standard file handling and will likely be the most useful
+            feature.</p>
+
+        <br />
+
+        <h3>The KFile Class</h3>
+        <p>File handling functions with encoding can be found inside the <mark class="code">KFile</mark> class. You can access
+            these by
+            creating an instance of the class. In C#, this is done with the following code: <mark class="code">KFile kf = new
+                KFile()</mark></p>
+
+        <br />
+
+        <h3>Writing to Files</h3>
+        <p>Similarly to the <mark class="code">UFile</mark> class, the <mark class="code">KFile</mark> class contains two methods for writing to
+            files:
+            <br>The <mark class="code">AppendToFile</mark> method will encode text, using the chosen encoder, then add it to the
+            end of a file leaving the previous contents intact.
+            <br>The <mark class="code">OverwriteToFile</mark> method will erase all text in a file and replace it with the text
+            passed to the method, encoded using the chosen encoder.
+            <br>Both methods require three arguments in the following order:
+        <ul>
+            <li>The directory of the file you wish to write to.</li>
+            <li>The text you wish to write to the file (not encoded).</li>
+            <li>A <mark class="code">KryptonType</mark> enum configured to the desired encoding type.</li>
+        </ul>
+        </p>
+
+        <br />
+
+        <h3>Reading from Files</h3>
+        <p>For reading from an encoded file to work, you must know what type of encoding was used originally. The
+            <mark class="code">KFile</mark> class contains two methods for reading encoded files.
+            <br>The <mark class="code">ReadFromFile</mark> method will read in text from the specified file, decode it using the
+            chosen encoding method, then return a string of the decoded text.
+            <br>The <mark class="code">ListFromFile</mark> method will read in text one line at a time into a List of strings,
+            decoding each line, then return the List of lines.
+            <br>Both methods require two arguments in the following order:
+        <ul>
+            <li>The directory of the file to be read and decoded.</li>
+            <li>A <mark class="code">KryptonType</mark> enum configured to the desired encoding method.</li>
+        </ul>
+        </p>
+    </div>
+
+</body>
+
+</html>
