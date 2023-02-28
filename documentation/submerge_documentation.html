@@ -11,6 +11,24 @@
             margin-top: 50px;
         }
     </style>
+
+    <script>
+        function readMoreLess(dotsI, mTxtI, btnTextI) {
+            var dots = document.getElementById(dotsI);
+            var moreText = document.getElementById(mTxtI);
+            var btnText = document.getElementById(btnTextI);
+
+            if (dots.style.display === "none") {
+                dots.style.display = "inline";
+                btnText.innerHTML = "Read More...";
+                moreText.style.display = "none";
+            } else {
+                dots.style.display = "none";
+                btnText.innerHTML = "Read Less...";
+                moreText.style.display = "inline";
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -118,11 +136,11 @@
         <h2>Classes</h2>
         <p>
             Submerge contains five classes, each of which carries out the operations for one of Submerge's four main
-            features, or combines them. These classes are: <mark class="code">FileHandling</mark>, <mark
+            features, or combines them. These classes are: <mark class="code">SFileHandling</mark>, <mark
                 class="code">SEncoding</mark>, <mark class="code">SEncrypting</mark>,
             <mark class="code">SDrown</mark> and <mark class="code">SMaster</mark>.
         </p>
-        <p>The <mark class="code">FileHandling</mark> class handles operations for reading and writing to files.</p>
+        <p>The <mark class="code">SFileHandling</mark> class handles operations for reading and writing to files.</p>
         <p>The <mark class="code">SEncoding</mark> class is used to handle encoding and decoding operations. It makes
             use of the <mark class="code">SEncoder</mark> enum to choose from which of the various encoders to use.</p>
         <p>The <mark class="code">SEncrypting</mark> class handles all operations with regards to encryption and
@@ -135,17 +153,17 @@
     <div class="section" id="filehandling">
         <h2>File Handling</h2>
         <p>One of the most basic features of Submerge is its file handling. All file handling operations take place in
-            the <mark class="code">FileHandling</mark> class. In C#, this can be created with the following code:</p>
+            the <mark class="code">SFileHandling</mark> class. In C#, this can be created with the following code:</p>
         <div class="codesection">
-            <mark class="type">FileHandling</mark> <mark class="var">fileHandling</mark> = <mark
-                class="keyword">new</mark> <mark class="type">FileHandling</mark>();
+            <mark class="type">SFileHandling</mark> <mark class="var">fileHandling</mark> = <mark
+                class="keyword">new</mark> <mark class="type">SFileHandling</mark>();
         </div>
         <p>Ensure you have completed the setup outlined <a href="#setup">above</a> first.</p>
 
         <div class="customhr"></div>
 
         <h3>Reading From Files</h3>
-        <p><mark class="code">FileHandling</mark> contains two methods for reading in text from a file: <mark
+        <p><mark class="code">SFileHandling</mark> contains two methods for reading in text from a file: <mark
                 class="code">StringFromFile</mark> and
             <mark class="code">ListFromFile</mark>.
         </p>
@@ -175,7 +193,7 @@
         <div class="customhr"></div>
 
         <h3>Writing to Files</h3>
-        <p><mark class="code">FileHandling</mark> contains three methods for writing to files: <mark
+        <p><mark class="code">SFileHandling</mark> contains three methods for writing to files: <mark
                 class="code">AddToFile</mark>, <mark class="code">OverwriteToFile</mark> and <mark
                 class="code">ListToFile</mark>.</p>
 
@@ -215,6 +233,18 @@
             fileHandling</mark>.<mark class="method">ListToFile</mark>(<mark class="var">myListObject</mark>,
             <mark class="value">@"myfile.txt"</mark>);
         </div>
+
+        <div class="customhr"></div>
+
+        <h3>Other Features</h3>
+        <p><mark class="code">SFileHandling</mark> also contains the <mark class="code">WipeFile</mark> method. This
+            method can be used to erase all of the contents within a file without deleting the file itself. The methods
+            takes a single parameter: the directory of the file to be wiped. If an error occurs, the method will return
+            <mark class="code">false</mark>. In C#, the method can be called like this:
+        </p>
+
+        <div class="codesection"><mark class="keyword">bool</mark> <mark class="var">result</mark> =
+            fileHandling</mark>.<mark class="method">WipeFile</mark>(<mark class="value">@"myfile.txt"</mark>); </div>
     </div>
 
     <div class="section" id="encoding">
@@ -318,7 +348,7 @@
         <h3>Common Errors</h3>
         <p>
             The most common error which will be encountered, when using encoding and decoding, will be if the string
-            passed to the method contains characters not compatible with the chosen encoding format. Through some quick
+            passed to the method contains characters not compatible with the chosen encoding format. Through some
             experimentation, UTF-8 appears to encounter this error the least out of the five formats, hence it is the
             default. If you encounter this error, try a different encoding type.
         </p>
@@ -494,7 +524,8 @@
             <mark class="var">drownKey</mark>);
         </div>
 
-        <p>The <mark class="code">SMaster</mark> class also contains the <mark class="code">DecodeAndRescue</mark> method to
+        <p>The <mark class="code">SMaster</mark> class also contains the <mark class="code">DecodeAndRescue</mark>
+            method to
             decode and rescue the data. The method takes two parameters: the array of strings containing the drowned
             data, and the drown key used to drown it. The method will then decode the array using UTF-8, rescue it
             using the drown key, and return the original string. If an error occurs, the message is printed to the
@@ -507,6 +538,43 @@
                 class="var">drownedArray</mark>,
             <mark class="var">drownKey</mark>);
         </div>
+
+        <div class="customhr"></div>
+
+        <h3>Encoding and Decoding Files</h3>
+        <p>The <mark class="code">SMaster</mark> class contains a method, with one overload, for encoding text and
+            writing it to a file:
+            <mark class="code">EncodeToFile</mark>. The standard method takes two parameters: the text to be encoded and
+            written to the file, and the directory of the file to be written to. The text is encoded using the default
+            UTF-8 encoding, then written to the file at the given directory. If an error occurs, the method returns
+            <mark class="code">false</mark>. In C#, this method can be used like so:
+        </p>
+
+        <div class="codesection">
+            <mark class="keyword">bool</mark> <mark class="var">result</mark> = <mark class="var">master</mark>.<mark
+                class="method">EncodeToFile</mark>(<mark class="value">"this text will be encoded and written"</mark>,
+            <mark class="value">@"myFile.txt"</mark>);
+        </div>
+
+        <p>The overload for the <mark class="code">EncodeToFile</mark> method allows the encoding type to be specified
+            using the <mark class="code">SEncoder</mark> enum. The method takes three arguments: an SEncoder enum
+            configured to the desired encoding format, the string to be encoded and written to the file, and the
+            directory of the file to be written to.</p>
+
+        <br>
+
+        <p><mark class="code">SMaster</mark> class also contains a method, with one overload, for decoding text from a
+            file: <mark class="code">DecodeFromFile</mark>. The standard method takes a single parameter: the directory
+            of the file to be decoded. The text is read in from the file, then decoded using the default UTF-8 format.
+            The method returns a string containing the decoded text. In C#, this method can be used like so:</p>
+
+        <div class="codesection">
+            <mark class="keyword">string</mark> <mark class="var">result</mark> = <mark class="var">master</mark>.<mark
+                class="method">DecodeFromFile</mark>(<mark class="value">@"myFile.txt"</mark>);
+        </div>
+
+        <p>The method has one overload with allows the encoding format to be specified. It takes two arguments: an
+            SEncoder enum set to the desired encoding format, and the directory of the file to be decoded.</p>
     </div>
 
     <div class="section" id="updates">
@@ -515,7 +583,7 @@
             to work on, so please be patient.</p>
         <ul>
             <li>Combined Drowning and Encryption</li>
-            <li>Direct reading and writing encoded and encrypted files</li>
+            <li>Direct reading and writing encrypted files</li>
             <li>Reading and writing Dictionaries to files</li>
             <li>Encryption using other alogrithms</li>
         </ul>
@@ -526,6 +594,16 @@
         <p>Below is a record of all changes made to Submerge since its release.</p>
 
         <div class="customhr"></div>
+
+        <h3>v1.0.7</h3>
+        <ul>
+            <li>Renamed <mark class="code">FileHandling</mark> class to <mark class="code">SFileHandling</mark></li>
+            <li>Added <mark class="code">EncodeToFile</mark> and <mark class="code">DecodeFromFile</mark> methods to
+                <mark class="code">SMaster</mark> class
+            </li>
+            <li>Added <mark class="code">WipeFile</mark> method to <mark class="code">SFileHandling</mark> class</li>
+            <li>Fixed mistakes in source code commenting, especially surrounding the default encoding format</li>
+        </ul>
 
         <h3>v1.0.6</h3>
         <ul>
