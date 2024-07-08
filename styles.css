@@ -9,48 +9,50 @@
 }
 
 @font-face {
-    font-family: Mono45-Light;
-    src: url(/resources/fonts/Mono45Headline-Light.ttf);
+    font-family: Gontserrat;
+    src: url(/resources/fonts/Gontserrat-Regular.ttf);
 }
 
-@font-face {
-    font-family: Mono45-Bold;
-    src: url(/resources/fonts/Mono45Headline-Bold.ttf);
-}
-
-html, body {
+html,
+body {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     height: 100%;
     width: 100%;
     background-color: var(--light);
+    font-family: Gontserrat;
+    font-size: 1.2rem;
+    color: var(--dark);
 }
 
 :root {
     --primary: #0b70cf;
     --light: #DADEE6;
     --dark: #242424;
+    --grey: #666666;
 }
 
 
 /* BASICS */
 h1 {
     font-family: Atmospheric;
-    font-size: 3rem;
-    color: var(--light);
+    font-size: 5rem;
+    color: var(--primary);
     margin: 0;
-    padding: 0;
+    padding: 2rem 1rem;
+    text-align: center;
 }
 
 h2 {
     font-size: 2rem;
     font-family: Atmospheric;
+    margin-left: -1rem;
 }
 
 h3 {
     font-size: 1.3rem;
-    font-family: Atmospheric;
+    font-weight: bold;
 }
 
 
@@ -61,11 +63,12 @@ nav {
     left: 0;
     width: 100%;
     background-color: var(--dark);
-    opacity: 0.5;
+    opacity: 0.7;
     height: 5rem;
     letter-spacing: 0;
     font-size: 0;
     transition: opacity 0.3s;
+    z-index: 5;
 }
 
 nav img {
@@ -82,9 +85,9 @@ nav a {
 
 nav a:not(.navlogo) {
     letter-spacing: normal;
-    font-size: 2rem;    
+    font-size: 2rem;
     padding-inline: 1.5rem;
-    height: 100%;    
+    height: 100%;
     transform: translateY(-3.1rem) skew(-15deg);
     background-color: var(--dark);
     transition: background-color 0.2s;
@@ -112,14 +115,13 @@ nav a:not(.navlogo):hover div {
 /* BANNER */
 #banner {
     width: 100%;
-    height: auto;
     text-align: center;
 }
 
 #banner img {
     width: 100%;
     height: auto;
-    background: black;
+    mask-image: linear-gradient(180deg, rgba(0,0,0,1) 98%, rgba(0,0,0,0) 100%);
 }
 
 #banner *:not(img) {
@@ -128,4 +130,65 @@ nav a:not(.navlogo):hover div {
     top: 10vw;
     left: 50%;
     transform: translateX(-50%);
+}
+
+/* CONTENT */
+.flexbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10%;
+}
+
+.flexbox:nth-child(1) {
+    text-align: left;
+}
+
+.flexbox:last-child {
+    text-align: right;
+}
+
+.flexbox img {
+    max-height: 20rem;
+    width: auto;
+    padding: 1rem;
+    clip-path: polygon(0 6.29rem,2rem 2rem,6.29rem 0,calc(100% - 6.29rem) 0,calc(100% - 2rem) 2rem,100% 6.29rem,100% calc(100% - 6.29rem),calc(100% - 2rem) calc(100% - 2rem),calc(100% - 6.29rem) 100%,6.29rem 100%,2rem calc(100% - 2rem),0 calc(100% - 6.29rem));
+
+}
+
+
+
+
+
+
+
+
+
+/* SCALING */
+@media only screen and (max-width: 750px) {
+    h1 {
+        font-size: 3rem;
+    }
+
+    nav {
+        text-align: center;
+        height: 4rem;
+    }
+
+    nav img {
+        height: 3rem;
+    }
+
+    nav a:not(.navlogo) {
+        font-size: 1.7rem;
+        transform: translateY(-2.4rem) skew(-15deg);
+    }
+
+    nav a:not(.navlogo) div {
+        transform: translateY(1rem);
+    }
+
+    nav a:not(.navlogo):hover div {
+        transform: translateY(0.85rem);
+    }
 }
