@@ -23,14 +23,18 @@ body {
     background-color: var(--light);
     font-family: Gontserrat;
     font-size: 1.2rem;
-    color: var(--dark);
+    color: var(--text);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 :root {
     --primary: #0b70cf;
     --light: #DADEE6;
+    --light-grad: radial-gradient(circle, rgba(218, 222, 230, 1) 70%, rgba(174, 178, 185, 1) 100%);
     --dark: #242424;
-    --grey: #666666;
+    --grey: #c6c9cf;
+    --text: #47494b;
 }
 
 
@@ -48,23 +52,31 @@ h2 {
     font-size: 2rem;
     font-family: Atmospheric;
     margin-left: -1rem;
+    text-align: center;
 }
 
 h3 {
     font-size: 1.3rem;
     font-weight: bold;
+    font-family: Atmospheric;
 }
 
+p a {
+    color: var(--primary);
+    transition: 0.2s;
+    text-decoration: none;
+}
+
+p a:hover {
+    color: dodgerblue;
+    text-decoration: underline dashed 2px;
+}
 
 /* NAVBAR */
 nav {
-    position: fixed;
-    top: 0;
-    left: 0;
     width: 100%;
     background-color: var(--dark);
-    opacity: 0.7;
-    height: 5rem;
+    height: 4rem;
     letter-spacing: 0;
     font-size: 0;
     transition: opacity 0.3s;
@@ -72,9 +84,10 @@ nav {
 }
 
 nav img {
-    max-height: 4rem;
+    max-height: 3rem;
     width: auto;
-    padding: 0.5rem;
+    padding: 0.5rem 1rem;
+    margin-right: 1rem;
 }
 
 nav a {
@@ -88,7 +101,7 @@ nav a:not(.navlogo) {
     font-size: 2rem;
     padding-inline: 1.5rem;
     height: 100%;
-    transform: translateY(-3.1rem) skew(-15deg);
+    transform: translateY(-2.1rem) skew(-15deg);
     background-color: var(--dark);
     transition: background-color 0.2s;
 }
@@ -96,7 +109,7 @@ nav a:not(.navlogo) {
 nav a:not(.navlogo) div {
     font-family: Mono45-Regular;
     color: var(--light);
-    transform: translateY(1.3rem);
+    transform: translateY(0.7rem);
     transition: transform 0.2s;
 }
 
@@ -105,63 +118,207 @@ nav a:not(.navlogo):hover {
 }
 
 nav a:not(.navlogo):hover div {
-    transform: translateY(1.15rem);
+    transform: translateY(0.6rem);
 }
 
-.opaque {
-    opacity: 1 !important;
+/* SCROLL TO TOP */
+#scrollToTopBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 10;
+    background-color: var(--primary);
+    color: var(--light);
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+    transition: background-color 0.2s;
+    text-align: center;
+    padding: 0.3rem 0.3rem 0.2rem 0.3rem;
+}
+
+#scrollToTopBtn img {
+    max-width: 2rem;
+    max-height: 2rem;
+    filter: opacity(0.8)
+}
+
+#scrollToTopBtn:hover {
+    background-color: var(--grey);
+    color: var(--text);
+}
+
+#scrollToTopBtn:hover img {
+    filter: opacity(0.5)
 }
 
 /* BANNER */
-#banner {
-    width: 100%;
-    text-align: center;
+.banner,
+.about,
+.contact {
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    margin-inline: 0 !important;
+    padding-inline: 15%;
+    color: var(--grey);
 }
 
-#banner img {
-    width: 100%;
-    height: auto;
-    mask-image: linear-gradient(180deg, rgba(0,0,0,1) 98%, rgba(0,0,0,0) 100%);
+.banner {
+    background-image: url("/resources/images/panorama.jpg");
+    margin-inline: 0 !important;
+    padding-inline: 15%;
+
 }
 
-#banner *:not(img) {
-    text-align: center;
-    position: absolute;
-    top: 10vw;
-    left: 50%;
-    transform: translateX(-50%);
+.banner .flexbox {
+    backdrop-filter: brightness(60%);
+}
+
+.about {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: 90%;
+    background-clip: padding-box;
+    background-image: url("/resources/images/sanfran.jpg");
+    background-repeat: round;
+    min-height: 20rem;
+}
+
+.about .flexbox {
+    backdrop-filter: brightness(60%);
+    padding: 2rem;
+}
+
+.contact {
+    background-image: url("/resources/images/aurora.jpg");
+}
+
+.banner .flexbox,
+.about .flexbox {
+    padding-inline: 10%;
+    border-radius: 5px;
+}
+
+.banner .flexbox img {
+    max-height: 20rem;
+    width: auto;
+    padding: 1rem;
+    border-radius: 25px;
+
 }
 
 /* CONTENT */
+section {
+    padding-block: 2rem;
+    margin-inline: 15%;
+    width: 70%;
+}
+
 .flexbox {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10%;
-}
-
-.flexbox:nth-child(1) {
+    row-gap: 2rem;
+    column-gap: 2rem;
     text-align: left;
+    flex-wrap: wrap;
 }
 
-.flexbox:last-child {
-    text-align: right;
-}
-
-.flexbox img {
+.flexbox>img {
     max-height: 20rem;
     width: auto;
     padding: 1rem;
-    clip-path: polygon(0 6.29rem,2rem 2rem,6.29rem 0,calc(100% - 6.29rem) 0,calc(100% - 2rem) 2rem,100% 6.29rem,100% calc(100% - 6.29rem),calc(100% - 2rem) calc(100% - 2rem),calc(100% - 6.29rem) 100%,6.29rem 100%,2rem calc(100% - 2rem),0 calc(100% - 6.29rem));
-
+    border-radius: 25px;
 }
 
+.flexbox .flextext {
+    flex: 40%;
+    text-align: left;
+}
 
+.flexbox .flextext h2 {
+    text-align: left;
+}
 
+.flexbox .flexcard {
+    flex: 10%;
+    padding: 1rem;
+    background-color: var(--grey);
+    text-align: center;
+    width: 10rem;
+    min-width: 12rem;
+    max-width: 12rem;
+    border-radius: 5px;
+    height: 15rem;
+}
 
+.flexbox .flexcard img {
+    max-height: 9rem;
+    height: auto;
+    padding-top: 1rem;
+}
 
+.flexbox .no-style {
+    color: var(--text);
+    text-decoration: none;
+}
 
+.flexbox .flexproj {
+    padding: 1rem;
+    flex: 49%;
+    max-width: 23.6rem;
+    width: 100%;
+    background-color: var(--grey);
+    border-radius: 5px;
+    text-align: center;
+    height: 25rem;
+    transition: 0.5s;
+    cursor: pointer;
+}
 
+.flexbox .flexproj:hover {
+    transform: scale(1.03);
+    box-shadow: 2px 2px 4px 4px rgba(0,0,0,0.3);
+}
+
+.flexbox .flexproj img {
+    max-width: 23rem;
+    height: auto;
+    max-height: 15rem;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.flexbox .flexproj p {
+    font-size: 1rem;
+}
+
+.flexbox .flexproj ul {
+    list-style: none;
+    font-size: 0.8rem;
+    font-weight: bold;
+    padding: 0;
+}
+
+.flexbox .flexproj ul li {
+    display: inline;
+    padding-inline: 1rem;
+}
+
+.flexbox .flexctact {
+    flex: 10%;
+    width: 5rem;
+    height: 5rem;
+    transition: 0.3s ease-in-out; 
+    object-fit: cover;
+    border-radius: 3px;
+}
+
+.flexbox .flexctact:hover {
+    transform: scale(1.08);
+}
 
 
 /* SCALING */

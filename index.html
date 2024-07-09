@@ -3,43 +3,177 @@
 
 <head>
 
+    <link rel="icon" href="/resources/images/akilgour.png" />
     <title>Alastair Kilgour</title>
     <link rel="stylesheet" href="styles.css">
     <script src="/scripts.js"></script>
 
 </head>
 
-<body id="body" onscroll="setNavbarOpacity()">
+<body id="body">
     <nav id="nav">
         <a class="navlogo" href="/index.html">
             <img src="/resources/images/akilgour.png">
         </a>
-        <a href="/index.html" style="margin-left: 1rem;">
-            <div>Home</div>
+        <a href="#skills">
+            <div>Skills</div>
         </a>
-        <a href="/about.html">
+        <a href="#about">
             <div>About</div>
         </a>
-        <a href="/contact.html">
+        <a href="#projects">
+            <div>Projects</div>
+        </a>
+        <a href="#contact">
             <div>Contact</div>
         </a>
     </nav>
 
-    <div id="banner">
-        <img loading="lazy" src="/resources/images/panorama.jpg">
-    </div>
-    
-    <div class="flexbox">
-        <div class="flextext">
-            <h2>Hi there!</h2>
-            <p>
-                I'm Alastair Kilgour, a student software developer at Glasgow Caledonian University.
-            </p>
+    <button onclick="topFunction()" id="scrollToTopBtn" title="Go to top"><img src="/resources/images/top.svg"></button>
+
+    <section class="banner">
+        <div class="flexbox">
+            <div class="flextext">
+                <h2>Hi there!</h2>
+                <p>
+                    I'm Alastair Kilgour, a student software developer at Glasgow Caledonian University. I specialise in
+                    developing the front and back-end of websites and apps across a number of mobile and desktop platforms.
+                </p>
+            </div>
+
+            <img loading="lazy" src="/resources/images/portrait.png">
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>Skills</h2>
+        <div class="flexbox">
+            <div class="flexcard">
+                <img loading="lazy" src="/resources/images/skills/csharp.png">
+                <h3>C#</h3>
+            </div>
+
+            <div class="flexcard">
+                <img loading="lazy" src="/resources/images/skills/java.png">
+                <h3>Java</h3>
+            </div>
+
+            <div class="flexcard">
+                <img loading="lazy" src="/resources/images/skills/python.png">
+                <h3>Python</h3>
+            </div>
+
+            <div class="flexcard">
+                <img loading="lazy" src="/resources/images/skills/html.png">
+                <h3>HTML</h3>
+            </div>
+
+            <div class="flexcard">
+                <img loading="lazy" src="/resources/images/skills/css.png">
+                <h3>CSS</h3>
+            </div>
+
+            <div class="flexcard">
+                <img loading="lazy" src="/resources/images/skills/git.png">
+                <h3>Git</h3>
+            </div>
+
+            <div class="flexcard">
+                <img loading="lazy" src="/resources/images/skills/sqlite.png">
+                <h3>SQLite</h3>
+            </div>
+
+            <div class="flexcard">
+                <img loading="lazy" src="/resources/images/skills/ef.png">
+                <h3>Entity Framework</h3>
+            </div>
+
+            <div class="flexcard">
+                <img loading="lazy" src="/resources/images/skills/aws.jpg">
+                <h3>AWS</h3>
+            </div>
         </div>
 
-        <img src="/resources/images/portrait.png">
-    </div>
-    
+        <br>
+    </section>
+
+    <section class="about" id="about">
+        <div class="flexbox">
+            <div class="flextext">
+                <h2>About Me</h2>
+                <p>
+                    I'm a passionate programmer who loves to create useful software. In 2023, I founded <a
+                        href="https://blueloch.co.uk">BlueLoch Software Solutions</a> together with some friends from
+                    uni. There I developed the company website and a number of mobile apps.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="flexbox">
+            <a class="no-style" href="https://blueloch.co.uk" target="_blank">
+                <div class="flexproj">
+                    <img loading="lazy" src="/resources/images/projects/blueloch.png">
+                    <h3>BlueLoch Website</h3>
+                    <p>
+                        The website for BlueLoch, my company. Designed and developed almost entirely by me!
+                    </p>
+                    <ul>
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>JavaScript</li>
+                    </ul>
+                </div>
+            </a>
+
+            <a class="no-style" href="https://blueloch.co.uk/pages/software/homebrew/feelsync.html" target="_blank">
+                <div class="flexproj">
+                    <img loading="lazy" src="/resources/images/projects/feelsync.png">
+                    <h3>FeelSync</h3>
+                    <p>
+                        A free mental health app designed to help users track their mood, thoughts and emotions!
+                    </p>
+                    <ul>
+                        <li>C#</li>
+                        <li>Razor</li>
+                        <li>CSS</li>
+                        <li>SQLite</li>
+                    </ul>
+                </div>
+            </a>
+
+            <a class="no-style" href="https://www.redagile.com/" target="_blank">
+                <div class="flexproj">
+                    <img loading="lazy" style="width: 100%;" src="/resources/images/projects/redagile.png">
+                    <h3>RedAgile</h3>
+                    <p>
+                        A custom app built for RedAgile to work alongside their Agile and Scrum courses!
+                    </p>
+                    <ul>
+                        <li>C#</li>
+                        <li>Razor</li>
+                        <li>CSS</li>
+                    </ul>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2>Contact Me</h2>
+        <div class="flexbox">
+            <a href="mailto:akilgour350@gmail.com" target="_blank">
+                <img class="flexctact" src="/resources/images/contacts/email.svg">
+            </a>
+
+            <a href="https://linkedin.com/in/akilgour350" target="_blank">
+                <img class="flexctact" src="/resources/images/contacts/linkedin.svg">
+            </a>
+            
+        </div>
+    </section>
 </body>
 
 </html>
