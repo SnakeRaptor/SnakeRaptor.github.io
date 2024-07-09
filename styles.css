@@ -101,7 +101,7 @@ nav a:not(.navlogo) {
     font-size: 2rem;
     padding-inline: 1.5rem;
     height: 100%;
-    transform: translateY(-2.1rem) skew(-15deg);
+    transform: translateY(-2.13rem) skew(-15deg);
     background-color: var(--dark);
     transition: background-color 0.2s;
 }
